@@ -1,5 +1,6 @@
 class ChangeMaxType < ActiveRecord::Migration[6.1]
   def change
-    t.integer :max_of_participant
+    remove_column :activities, :max_of_participant
+    add_column :activities, :max_of_participant, :integer
   end
 end
