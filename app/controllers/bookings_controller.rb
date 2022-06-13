@@ -24,5 +24,5 @@ end
 private
 
 def booking_params
-  params.require(:booking).permit(:title, :date, :description, :localisation, :meeting_point, :difficulty, :max_of_participant, :activity, :user)
+  params.require(:booking).permit(:title, :date, :description, :location, :meeting_point, :difficulty, :max_of_participant, :activity, :user)
 end
