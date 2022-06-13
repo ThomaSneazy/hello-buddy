@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
     @activity.user = current_user
     @activity.save
     if @activity.save
-      redeirect_to activity_path(@activity)
+      redirect_to activity_path(@activity)
     else
       render :new
     end
