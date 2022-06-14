@@ -1,3 +1,52 @@
+<<<<<<< HEAD
+.card-activity{
+  font-family: 'Futura';
+  background: #FFFF;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 48px;
+  margin-bottom: 16px;
+  height: 120px;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.first_name_card{
+  color: rgb(0, 0, 0);
+  right: 9vh;
+  text-transform: capitalize;
+}
+
+.card-activity h2{
+  position: absolute;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.card-activity p{
+  font-size: 14px;
+  font-family: 'Futura';
+  position: absolute;
+}
+
+
+
+.card-activity img {
+  width: 65px;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  position: relative;
+  left: 19vh;
+  bottom: 56px;
+  border: 2px solid #809A6F;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.date-picker{
+  text-align: center;
+=======
 .card-category {
   display: flex;
   flex-direction: row;
@@ -19,4 +68,5 @@
   transition: 0.8s ease;
   transform: scale(1.04);
   opacity: 1;
+>>>>>>> master
 }
