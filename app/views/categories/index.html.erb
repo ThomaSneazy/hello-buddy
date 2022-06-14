@@ -1,4 +1,4 @@
-<h1>Categories Index</h1>
+<h2 class="title-card">Randonnée</h2>
 <div class="cards">
       <% @categories.each do |category| %>
            <%= link_to category_activities_path(category), :action => 'go' do %>
@@ -9,7 +9,29 @@
             <% end %>
             </div>
 
-<h2>Randonnée</h2>
+<h2 class="title-card">Rafting</h2>
+<div class="cards">
+      <% @categories.each do |category| %>
+           <%= link_to category_activities_path(category), :action => 'go' do %>
+          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('https://st.depositphotos.com/2270781/2435/i/600/depositphotos_24359265-stock-photo-hiking-in-the-mountains.jpg')">
+                <h3><%= category.name %></h3>
+              </div>
+            <% end %>
+            <% end %>
+            </div>
+
+<h2 class="title-card">Escalade</h2>
+<div class="cards">
+      <% @categories.each do |category| %>
+           <%= link_to category_activities_path(category), :action => 'go' do %>
+          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('https://st.depositphotos.com/2270781/2435/i/600/depositphotos_24359265-stock-photo-hiking-in-the-mountains.jpg')">
+                <h3><%= category.name %></h3>
+              </div>
+            <% end %>
+            <% end %>
+            </div>
+
+<h2 class="title-card">Yoga</h2>
 <div class="cards">
       <% @categories.each do |category| %>
            <%= link_to category_activities_path(category), :action => 'go' do %>
@@ -20,7 +42,7 @@
             <% end %>
             </div>
 
-<h2>Rafting</h2>
+<h2 class="title-card">Plongée</h2>
 <div class="cards">
       <% @categories.each do |category| %>
            <%= link_to category_activities_path(category), :action => 'go' do %>
@@ -31,7 +53,7 @@
             <% end %>
             </div>
 
-<h2>Escalade</h2>
+<h2 class="title-card">VTT</h2>
 <div class="cards">
       <% @categories.each do |category| %>
            <%= link_to category_activities_path(category), :action => 'go' do %>
@@ -42,7 +64,7 @@
             <% end %>
             </div>
 
-<h2>Yoga</h2>
+<h2 class="title-card">Surf</h2>
 <div class="cards">
       <% @categories.each do |category| %>
            <%= link_to category_activities_path(category), :action => 'go' do %>
@@ -53,29 +75,7 @@
             <% end %>
             </div>
 
-<h2>Plongée</h2>
-<div class="cards">
-      <% @categories.each do |category| %>
-           <%= link_to category_activities_path(category), :action => 'go' do %>
-          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= image_path(category.photo_path) %>')">
-                <h3><%= category.name %></h3>
-              </div>
-            <% end %>
-            <% end %>
-            </div>
-
-<h2>VTT</h2>
-<div class="cards">
-      <% @categories.each do |category| %>
-           <%= link_to category_activities_path(category), :action => 'go' do %>
-          <div class="card-category" style="background-image: linear-gradient(rgb(0 0 0 / 30%),rgb(0 0 0 / 30%)), url('<%= image_path(category.photo_path) %>')">
-                <h3><%= category.name %></h3>
-              </div>
-            <% end %>
-            <% end %>
-            </div>
-
-<h2>Surf</h2>
+<h2 class="title-card">Musculation</h2>
 <div class="cards">
       <% @categories.each do |category| %>
            <%= link_to category_activities_path(category), :action => 'go' do %>

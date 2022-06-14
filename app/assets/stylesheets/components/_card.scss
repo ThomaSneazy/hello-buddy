@@ -6,12 +6,30 @@
 }
 
 .title-card{
-  color: #ECECEC;
-  font-size: 20px;
+  color: #000000;
+  font-size: 30px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   margin: 5px;
   padding-left: 10px;
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 3px rgb(13, 13, 13);
+  border: 1px solid #464646;
+  border-radius: 1px;
+  box-shadow: 0 0 15px rgba(54, 54, 54, 0.2);
+  margin: 6px;
 }
 
 .card-category:hover{
