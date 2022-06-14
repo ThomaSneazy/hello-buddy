@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_143546) do
+ActiveRecord::Schema.define(version: 2022_06_14_131251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,8 +56,20 @@ ActiveRecord::Schema.define(version: 2022_06_13_143546) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["category_id"], name: "index_activities_on_category_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.boolean "validated", default: false
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_bookings_on_activity_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -116,6 +128,8 @@ ActiveRecord::Schema.define(version: 2022_06_13_143546) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "users"
+  add_foreign_key "bookings", "activities"
+  add_foreign_key "bookings", "users"
   add_foreign_key "chatrooms", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"

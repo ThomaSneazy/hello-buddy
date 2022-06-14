@@ -30,12 +30,12 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update(activity_params)
-    redirect_to activity_path(@activity)
+    redeirect_to activity_path(@activity)
   end
 
   def destroy
     @activity.destroy
-    redirect_to activities.path
+    redeirect_to activities.path
   end
 
   private
