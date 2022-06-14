@@ -1,0 +1,21 @@
+<div class="main-container">
+
+  <div class="creator-user">
+      <p><%= @activity.start_date  %></p>
+      <p><%= @activity.user.first_name %></p>
+  </div>
+
+  <div class="activity-container">
+    <h2><%= @activity.title %></h2>
+
+    <div class="user-description">
+      <p><%= @activity.user.description %></p>
+    </div>
+
+    <p>Matériel requis: </p>
+    <p>Matériel difficultés: <%= @activity.difficulty %> </p>
+    <% @activity.bookings.each do |booking| %>
+     <p>Participants:</p>
+    <% end %>
+  </div>
+</div>
