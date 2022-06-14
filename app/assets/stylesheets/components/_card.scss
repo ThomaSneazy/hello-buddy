@@ -1,0 +1,21 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  overflow-x: scroll;
+}
+
+.title-card{
+  color: #ECECEC;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin: 5px;
+  padding-left: 10px;
+}
+
+.card-category:hover{
+  transition: 0.8s ease;
+  transform: scale(1.04);
+  opacity: 1;
+}
