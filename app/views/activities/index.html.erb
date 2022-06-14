@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/views/Activities/index.html.erb
 <div class="date-picker">
   <p>Date: <input type="text" id="datepicker"></p>
 </div>
@@ -17,3 +18,8 @@
               </div>
       </div>
       <% end %>
+=======
+<% @activities.each do |activity| %>
+  <%= activity.title  %>
+<% end %>
+>>>>>>> master:app/views/activities/index.html.erb
