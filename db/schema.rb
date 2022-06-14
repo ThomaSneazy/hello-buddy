@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 2022_06_14_131251) do
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
-    t.date "start_date"
-    t.date "end_date"
     t.text "description"
     t.text "location"
     t.string "meeting_point"
@@ -56,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_06_14_131251) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
+    t.datetime "start_date"
     t.float "latitude"
     t.float "longitude"
     t.index ["category_id"], name: "index_activities_on_category_id"
