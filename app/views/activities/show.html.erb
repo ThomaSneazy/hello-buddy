@@ -1,0 +1,28 @@
+<p><%= @activity.inspect %></p>
+
+<p><%= @activity.category.inspect %></p>
+
+<p><%= @activity.user.inspect %></p>
+
+
+<div class="main-container">
+
+  <div class="creator-user">
+      <p><%= @activity.start_date  %></p>
+      <p><%= @activity.user.first_name %></p>
+  </div>
+
+  <div class="activity-container">
+    <h2><%= @activity.title %></h2>
+
+    <div class="user-description">
+      <p><%= @activity.user.description %></p>
+    </div>
+
+    <p>Matériel requis: </p>
+    <p>Matériel difficultés: <%= @activity.difficulty %> </p>
+    <% @activity.bookings.each do |booking| %>
+     <p>Participants: <%= cl_image_tag booking.user.photo.keyclass: "avatar" %></p>
+    <% end %>
+  </div>
+</div>
