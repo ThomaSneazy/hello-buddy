@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
   def index
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
     @activities = Activity.where(category_id: @category.id)
   end
 
