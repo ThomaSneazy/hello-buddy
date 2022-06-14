@@ -27,5 +27,6 @@ tennis.save
 rando = Activity.new(title: "rando courir", start_date: 20220614, end_date: 20220615, description: "c'est la description", meeting_point: "calanques castellane", difficulty: 6, max_of_participant: 2, category_id: randonee.id, user_id: user1.id)
 
 yoga_par_terre = Activity.new(title: "yoga par terre", start_date: 20220614, end_date: 20220615, description: "c'est la description", meeting_point: "calanques castellane", difficulty: 6, max_of_participant: 2, category_id: yoga.id, user_id: user2.id)
+
 rando.save
 yoga_par_terre.save
