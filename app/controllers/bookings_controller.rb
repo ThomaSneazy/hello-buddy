@@ -1,6 +1,11 @@
 class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
+    @marker =
+      {
+        lat: @booking.activity.latitude,
+        lng: @booking.activity.longitude
+      }
   end
 
   def create
@@ -34,5 +39,5 @@ end
 private
 
 def booking_params
-  params.require(:booking).permit(:activity, :user, :validated)
+  params.require(:booking).permit(:activity_id, :user_id, :validated)
 end

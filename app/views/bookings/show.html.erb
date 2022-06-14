@@ -1,1 +1,27 @@
-<%= @booking.inspect %>
+
+
+<div class="booking-container">
+    <div class="main-text">
+      <strong><h1>Félicitation !</h1></strong>
+        <h5>Votre réservation est envoyés à</h5>
+        <h5><%= @booking.user.first_name %> !</h5>
+    </div>
+
+    <div class="circle">
+      <strong><h5>Enjoy !</h5></strong>
+      <%= image_tag "circle.png" %>
+    </div>
+
+
+    <div class="location">
+        <p><%= @booking.activity.meeting_point %></p>
+    </div>
+
+
+      <div style="width: 70%; height: 150px; border: solid 1px black; filter: drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.25)) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));"
+        data-controller="mapbox"
+        data-mapbox-marker-value="<%= @marker.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+
+</div>
