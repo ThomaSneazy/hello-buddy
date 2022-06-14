@@ -10,8 +10,8 @@ class CreateActivities < ActiveRecord::Migration[6.1]
       t.integer :difficulty
       t.string :max_of_participant
 
-      t.references :user, null: false, foreign_key: true
-      t.references :category, null: false, foreign_key: true
+      t.references :user, foreign_key: true
+      t.references :category, foreign_key: true
       t.timestamps
     end
   end

@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2022_06_14_100927) do
     t.text "location"
     t.string "meeting_point"
     t.integer "difficulty"
-    t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
