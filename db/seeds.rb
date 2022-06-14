@@ -16,9 +16,11 @@ user2 = User.new(email: 'azerty@gmail.com', password: '123456', password_confirm
 user1.save
 user2.save
 
+
 randonnee = Category.new(name: "Randonnée", photo_path: 'rando.jpeg')
 randonnee.save
 yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpeg')
+
 yoga.save
 tennis = Category.new(name: "Tennis", photo_path: 'tennis.jpeg')
 tennis.save
@@ -29,8 +31,12 @@ rafting.save
 vtt = Category.new(name: "VTT", photo_path: 'vtt.jpeg')
 vtt.save
 
-rando = Activity.new(title: "rando courir", start_date: 20220614, end_date: 20220615, description: "c'est la description", meeting_point: "calanques castellane", difficulty: 6, max_of_participant: 2, category_id: randonnee.id, user_id: user1.id)
 
-yoga_par_terre = Activity.new(title: "yoga par terre", start_date: 20220614, end_date: 20220615, description: "c'est la description", meeting_point: "calanques castellane", difficulty: 6, max_of_participant: 2, category_id: yoga.id, user_id: user2.id)
+rando = Activity.new(title: "rando courir", start_date: 20220614, end_date: 20220615, description: "c'est la description", meeting_point: "20 rue haxo, Marseille", difficulty: 6, max_of_participant: 2, category_id: randonee.id, user_id: user1.id)
+
+yoga_par_terre = Activity.new(title: "yoga par terre", start_date: 20220614, end_date: 20220615, description: "c'est la description", meeting_point: "20 rue haxo, Marseille", difficulty: 6, max_of_participant: 2, category_id: yoga.id, user_id: user2.id)
+
+
 rando.save
+
 yoga_par_terre.save
