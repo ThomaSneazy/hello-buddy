@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
   def index
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
     @activities = Activity.where(category_id: @category.id)
   end
 
@@ -30,12 +30,12 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update(activity_params)
-    redeirect_to activity_path(@activity)
+    redirect_to activity_path(@activity)
   end
 
   def destroy
     @activity.destroy
-    redeirect_to activities.path
+    redirect_to activities.path
   end
 
   private
