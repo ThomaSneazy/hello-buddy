@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_06_14_125042) do
-=======
-ActiveRecord::Schema.define(version: 2022_06_14_131251) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +55,6 @@ ActiveRecord::Schema.define(version: 2022_06_14_131251) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
     t.datetime "start_date"
-<<<<<<< HEAD
-=======
-    t.float "latitude"
-    t.float "longitude"
->>>>>>> master
     t.index ["category_id"], name: "index_activities_on_category_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
