@@ -63,8 +63,6 @@
   box-shadow: 0 0 15px rgba(54, 54, 54, 0.2);
 }
 
-.card-category:hover{
-  transition: 0.8s ease;
-  transform: scale(1.04);
-  opacity: 1;
+.card-category a{
+  text-decoration: none;
 }
