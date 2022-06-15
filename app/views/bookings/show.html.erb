@@ -3,7 +3,7 @@
 <div class="booking-container">
     <div class="main-text">
       <strong><h1>Félicitation !</h1></strong>
-        <h5>Votre réservation est envoyés à</h5>
+        <h5>Votre réservation du <%= @booking.activity.start_date.strftime('%F') %> est envoyés à</h5>
         <h5><%= @booking.activity.user.first_name %> !</h5>
     </div>
 
