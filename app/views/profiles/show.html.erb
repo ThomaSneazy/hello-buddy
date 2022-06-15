@@ -1,0 +1,41 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+  <div class="container position-relative">
+
+
+    <div class="position-absolute top-50 start-50 translate-middle mt-3">
+        <div class=" image d-flex flex-column justify-content-center align-items-center">
+
+
+          <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+
+
+          <span class="name-title text-white text-center mt-3">   <%= @user.first_name %>
+          <%= @user.last_name %></span>
+
+        <div class="infos">
+          <div class="text mt-3 text-start text-white ">
+            <i class="fa-solid fa-location-dot">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+            <span class="text-white"><%= @user.address %></span>
+            <br>
+            <i class="fa-solid fa-phone text-white ">&nbsp;&nbsp;&nbsp;</i>
+            <span class="text-white"><%= @user.phone %></span>
+            <br>
+            <i class="fa-solid fa-image-portrait text-white ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+            <span class="text-white"><%= Date.new(Date.today.year() - 2000).year %> ans </span>
+          </div>
+        </div>
+
+    </div>
+
+  <%# <div class="card mb-2"> %>
+     <%# <div class="card-body mx-2"> %>
+       <%# <%= simple_form_for([@activity, @review], remote: true) do  |f| %>
+        <%# <%= f.input :content, placeholder: "How was the trip ?"%>
+         <%# <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "How would you rate the trip ?", input_html: { data: { controller: "jquery-bar-rating" } } %>
+         <%# <%= f.submit class:"btn btn-flat" %>
+      <%# <% end %>
+   </div>
+ </div>
+
+  </div>
+</div>
