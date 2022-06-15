@@ -3,7 +3,13 @@ class ActivitiesController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @activities = Activity.where(category_id: @category.id)
+
+    if params[:activity] && params[:activity][:start_date].present?
+      start_date = params[:activity][:start_date].to_datetime
+      @activities = @category.activities.where(start_date: start_date..start_date + 24.hours)
+    else
+      @activities = @category.activities
+    end
   end
 
   def new
