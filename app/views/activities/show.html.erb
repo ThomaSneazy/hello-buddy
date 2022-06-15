@@ -1,5 +1,7 @@
 <div class="main-container">
 
+    <p style="color: red">for testing only current_user.id <%= current_user.id %></p>
+
   <div class="creator-container">
 
       <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
@@ -58,7 +60,9 @@
 
   <div class="btn-container">
     <div><a class="button-34 red">Contacter</a></div>
-    <div><%= link_to 'Réserver', category_activity_bookings_path(@activity.category, @activity), class:"button-34 green" %></div>
+    <div><%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %></div>
   </div>
+
+
 
 </div>
