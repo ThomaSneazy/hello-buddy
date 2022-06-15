@@ -120,3 +120,15 @@ rando3 = Activity.new(
   user_id: user2.id
 )
 rando3.save!
+
+rando9 = Activity.new(
+  title: "Randonnée Calanques Sugiton",
+  description: "La description est ici en attendant",
+  meeting_point: "Okok",
+  start_date: DateTime.new(2022, 8, 21, 11, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user1.id
+)
+rando9.save!
