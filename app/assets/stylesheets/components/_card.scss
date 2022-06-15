@@ -63,8 +63,23 @@
   box-shadow: 0 0 15px rgba(54, 54, 54, 0.2);
 }
 
-.card-category:hover{
-  transition: 0.8s ease;
-  transform: scale(1.04);
-  opacity: 1;
+.card-category a{
+  text-decoration: none;
+}
+
+.btn-search-date{
+  color: white;
+  margin-bottom: 12px;
+  font-weight: 600;
+  background-color: #809A6F;
+  border-radius: 20px;
+  font-size: 16px;
+  border: none;
+  padding: 11px 34px;
+}
+
+.main-search{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
