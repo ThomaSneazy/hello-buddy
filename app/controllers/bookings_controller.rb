@@ -11,12 +11,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @activity = Activity.find(params[:activity_id])
+    @booking.activity = @activity
+    @booking.user = current_user
     @booking.save
-
     if @booking.save
-      @booking.activity = @activity
-      @booking.user_id = current_user.id
-      redirect_to booking_path(@booking)
+      redirect_to category_activity_booking(@booking)
     else
       redirect_to root_path
     end
@@ -39,5 +38,5 @@ end
 private
 
 def booking_params
-  params.require(:booking).permit(:activity_id, :user_id, :validated)
+  params.require(:booking).permit(:validated, :activity_id, :user_id)
 end

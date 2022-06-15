@@ -58,7 +58,7 @@
 
   <div class="btn-container">
     <div><a class="button-34 red">Contacter</a></div>
-    <div><a class="button-34 green">Réserver</a></div>
+    <div><%= link_to 'Réserver', category_activity_bookings_path(@activity.category, @activity), class:"button-34 green" %></div>
   </div>
 
 </div>
