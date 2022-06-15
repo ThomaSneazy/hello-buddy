@@ -9,8 +9,8 @@
     </div>
 
     <% @activities.each do |activity| %>
-      <div class="card-activity">
-        <%#= link_to category_activity_path(activity), :action => 'go' do %>
+        <%= link_to category_activity_path(@category, activity), :action => 'go' do %>
+          <div class="card-activity">
             <h2><%= activity.title %></h2><br>
             <p><%= activity.description %></p><br><br>
             <p style=""><%= activity.start_date.strftime("Le %d/%m/%Y à %H:%M") %></p>
@@ -18,7 +18,7 @@
               <div class="avatar-rounded-activity">
                   <%= image_tag "https://pickaface.net/gallery/avatar/unr_random_160817_0304_2mvqp69.png", class: "avatar-large", alt: "avatar-large" %>
                 <%#= cl_image_tag current_user.photo.key %>
-        <%# end %>
+        <% end %>
               </div>
       </div>
       <% end %>
