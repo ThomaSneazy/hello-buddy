@@ -11,7 +11,7 @@ Activity.destroy_all
 Category.destroy_all
 User.destroy_all
 
-user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'tom', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: 20000622)
+user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'tom', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: Date.new(Date.today.year() - 2000).year)
 user2 = User.new(email: 'azerty@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'rachid', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: 20000622)
 user1.save
 user2.save
@@ -124,3 +124,15 @@ rando3 = Activity.new(
   user_id: user2.id
 )
 rando3.save!
+
+rando9 = Activity.new(
+  title: "Randonnée Calanques Sugiton",
+  description: "La description est ici en attendant",
+  meeting_point: "Okok",
+  start_date: DateTime.new(2022, 8, 21, 11, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user1.id
+)
+rando9.save!
