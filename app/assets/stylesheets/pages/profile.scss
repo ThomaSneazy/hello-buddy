@@ -1,0 +1,83 @@
+body {
+  background-color: rgb(235, 226, 226)
+}
+
+.card {
+  width: 350px;
+  background-color: #cfc0c0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.image img {
+  transition: all 0.5s
+}
+
+.card:hover .image img {
+  transform: scale(1.5)
+}
+
+.btn {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold
+}
+
+.text span {
+  font-size: 13px;
+  color: #545454;
+  font-weight: 500
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+//banner
+
+.banner {
+  background: linear-gradient(180deg, rgba(213, 216, 181, 0.2) 0%, rgba(168, 90, 90, 0.18) 100%), #905f5f;
+  box-shadow: 3px 5px 3px rgba(69, 65, 65, 0.28);
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 350px;
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+// avatar
+.avatar {
+  width: 100px;
+  border-radius: 50%;
+  border: solid 1px white;
+}
+
+//user info
+.infos {
+  line-height: 30px;
+}
