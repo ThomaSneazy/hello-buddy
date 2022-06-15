@@ -23,6 +23,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    @avg_rating = (@activity.user.reviews.map { |rev| rev.rating / @activity.user.reviews.size }).sum
   end
 
   def edit

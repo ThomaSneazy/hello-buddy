@@ -1,21 +1,64 @@
 <div class="main-container">
 
-  <div class="creator-user">
-      <p><%= @activity.start_date  %></p>
-      <p><%= @activity.user.first_name %></p>
+  <div class="creator-container">
+
+      <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
+      </div>
+      <div class="creator-info">
+          <p class="start-date"><%= @activity.start_date.strftime('%F')  %></p>
+          <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
+          <div class="creator-rating">
+            <% @avg_rating.times do %>
+              <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
+            <% end %>
+            <% (5 - @avg_rating).times do %>
+              <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
+            <% end %>
+          </div>
+      </div>
+
   </div>
 
   <div class="activity-container">
-    <h2><%= @activity.title %></h2>
+    <h3><%= @activity.title %></h3>
+    <p class="start-hour"><%= @activity.start_date.strftime('%H')  %> H <%= @activity.start_date.strftime('%M') %></p>
 
     <div class="user-description">
       <p><%= @activity.user.description %></p>
     </div>
 
-    <p>Matériel requis: </p>
-    <p>Matériel difficultés: <%= @activity.difficulty %> </p>
-    <% @activity.bookings.each do |booking| %>
-     <p>Participants:</p>
-    <% end %>
+    <div class="activity-info">
+
+    <table class="table borderless">
+      <tbody class="d-flex" >
+        <tr class="d-flex flex-column" >
+          <td>Matériel requis:</td>
+          <td>Difficultés:</td>
+          <td>Participants:</td>
+        </tr>
+        <tr class="d-flex flex-column">
+          <td><%= @activity.material %> </td>
+          <td><%= @activity.difficulty %> /10</td>
+          <td><% @activity.bookings.each do |booking| %><%= cl_image_tag booking.user.photo.key, class: "avatar" %><% end %></td>
+        </tr>
+      </tbody>
+    </table>
+        <%# <p>Matériel requis:</p> <p><%= @activity.material %>
+        <%# <p>Difficultés: </p> <p><%= @activity.difficulty %>
+
+        <%# <p>Participants: </p>
+          <% @activity.bookings.each do |booking| %>
+            <%# <div><%= cl_image_tag booking.user.photo.key, class: "avatar" %>
+          <%# <% end %>
+
+
+    </div>
+</div>
+
+
+  <div class="btn-container">
+    <div><a class="button-34 red">Contacter</a></div>
+    <div><a class="button-34 green">Réserver</a></div>
   </div>
+
 </div>
