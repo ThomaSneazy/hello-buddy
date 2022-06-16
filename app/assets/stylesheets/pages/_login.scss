@@ -1,0 +1,26 @@
+.log-in-page {
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D5D8B5;
+}
+
+.container-button {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24vh;
+  width: 24vh;
+}
+
+.btn-login-page {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 40px;
+}
