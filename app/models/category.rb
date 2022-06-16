@@ -5,8 +5,8 @@ class Category < ApplicationRecord
   validates :name, uniqueness: true, presence: true
   include PgSearch::Model
   pg_search_scope :search_by_name,
-                  against: :name,
+                  against: [:name],
                   using: {
-      tsearch: { prefix: true }
-    }
+                    tsearch: { prefix: true }
+                  }
 end
