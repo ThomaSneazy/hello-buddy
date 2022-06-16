@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2022_06_16_100639) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
+    t.datetime "start_date"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "start_date"
     t.string "material"
     t.index ["category_id"], name: "index_activities_on_category_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
