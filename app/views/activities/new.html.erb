@@ -1,0 +1,16 @@
+<h2>Ajoute ton activité</h2>
+
+<div class="text-black">
+  <%= simple_form_for [@category, @activity ] do |f| %>
+    <%= f.association :category, input_html: {class: 'select2'}%>
+    <%= f.input :title, placeholder: 'Calanques Sormiou' %>
+    <%= f.input :description, placeholder: 'Belle balade près de Marseille...' %>
+    <%= f.input :material , placeholder: 'Chaussure hautes, bâtons...' %>
+    <%= f.input :max_of_participant, placeholder: '2..5' %>
+    <%= f.input :difficulty, placeholder: '1..10' %>
+    <%= f.input :meeting_point, placeholder: 'Parking Calanques Luminy' %>
+    <%= f.input :start_date %>
+
+    <%= f.submit "Ajoute ton activité", class: "button-submit-activity" %>
+  <% end %>
+</div>

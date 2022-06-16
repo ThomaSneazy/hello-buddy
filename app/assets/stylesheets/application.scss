@@ -18,9 +18,29 @@
 @import "activities/show";
 @import "mapbox-gl/dist/mapbox-gl";
 @import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "select2/dist/css/select2";
+
+
+
 
 a {
   text-decoration: none;
   color: black;
+  font-family: 'Fredoka';
+}
+h1, h2, h3, h4, p{
+  font-family: 'Fredoka';
+}
 
+.btn-submit{
+  background: #A25B5B;
+  border-radius: 20px;
+  &:hover{
+    color: #f0c1c1
+}
+text-decoration: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 18px;
 }
