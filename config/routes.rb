@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'categories#index'
+  root to: 'pages#home'
+
   get 'profiles/:id', to: 'profiles#show', as: :profiles
   get 'dashboards/:id', to: 'dashboards#index', as: :dashboard
   patch 'bookings/:id', to: 'bookings#validation', as: :validation
