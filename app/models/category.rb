@@ -4,8 +4,8 @@ class Category < ApplicationRecord
   has_one_attached :photo
   validates :name, uniqueness: true, presence: true
   include PgSearch::Model
-  pg_search_scope :search_by_title,
-    against: :title,
+  pg_search_scope :search_by_name,
+    against: :name,
     using: {
       tsearch: { prefix: true }
     }
