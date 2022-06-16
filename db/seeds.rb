@@ -11,7 +11,7 @@ Activity.destroy_all
 Category.destroy_all
 User.destroy_all
 
-user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'tom', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: Date.new(Date.today.year() - 2000).year)
+user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'tom', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: DateTime.new(DateTime.now.year() - 2000).year)
 user2 = User.new(email: 'azerty@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'rachid', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: 20000622)
 user1.save
 user2.save
