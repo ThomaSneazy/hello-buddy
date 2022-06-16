@@ -1,6 +1,6 @@
 <div class="log-in-page">
   <div class="container-button">
-    <a class="green btn-login-page">log in</a>
-    <a class="red btn-login-page">sign up !</a>
+    <%= link_to 'log in', new_user_session_path, class: "green btn-login-page" %>
+    <%= link_to 'sign up !', new_user_registration_path, class: "red btn-login-page" %>
   </div>
 </div>
