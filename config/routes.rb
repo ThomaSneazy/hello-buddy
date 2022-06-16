@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+  root to: 'pages#home'
 
-  root to: 'pages#home'  
   get 'profiles/:id', to: 'profiles#show', as: :profiles
+  get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
+  patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
+  patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routin, .html
   resources :categories do

@@ -13,7 +13,6 @@
         <%= link_to category_activity_path(@category, activity), :action => 'go' do %>
             <h2><%= activity.title %></h2><br>
             <p><%= activity.description %></p><br><br>
-            <%# <p style=""><%= activity.start_date.strftime("Le %d/%m/%Y à %H:%M") %></p> %>
             <p style=""><%= Time.at(activity.start_date).strftime("Le %d/%m/%Y à %H:%M") %></p>
             <p class="first_name_card"><%= activity.user.first_name %></p>
               <div class="avatar-rounded-activity">
