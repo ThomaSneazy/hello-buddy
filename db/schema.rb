@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_15_085736) do
+ActiveRecord::Schema.define(version: 2022_06_16_100639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(version: 2022_06_15_085736) do
     t.text "location"
     t.string "meeting_point"
     t.integer "difficulty"
-    t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
-    t.datetime "start_date"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "start_date"
     t.string "material"
     t.index ["category_id"], name: "index_activities_on_category_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2022_06_15_085736) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "refused", default: false
     t.index ["activity_id"], name: "index_bookings_on_activity_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
