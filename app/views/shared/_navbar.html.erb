@@ -21,8 +21,8 @@
 	</div>
 	<div class="mobile-bottom-nav__item">
 		<div class="mobile-bottom-nav__item-content">
-    <%= link_to dashboard_path(current_user) do %>
       <% if user_signed_in? %>
+        <%= link_to dashboard_path(current_user) do %>
         <%= cl_image_tag current_user.photo.key,class: "avatar-profile", alt: "avatar-large" %>
       <% end %>
     <% end %>
