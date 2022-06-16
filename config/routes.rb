@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get 'profiles/:id', to: 'profiles#show', as: :profiles
-  get 'dashboards/:id', to: 'dashboards#index', as: :dashboard
-  patch 'bookings/:id', to: 'bookings#validation', as: :validation
-  patch 'bookings/:id', to: 'bookings#refused', as: :refused
+  get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
+  patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
+  patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routin, .html
   resources :categories do

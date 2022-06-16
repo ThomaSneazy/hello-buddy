@@ -26,18 +26,18 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path(current_user), alert: "Votre demande est supprimée"
   end
 
+  def refused
+    @booking = Booking.find(params[:id])
+    @booking.refused = true
+    @booking.save
+    redirect_to dashboard_path(current_user), notice: "Votre demande est refusée"
+  end
+
   def validation
     @booking = Booking.find(params[:id])
     @booking.validated = true
     @booking.save
     redirect_to dashboard_path(current_user), notice: "Votre demande est confirmée"
-  end
-
-  def refused
-    @booking = Booking.find(params[:id])
-    @booking.refused = true
-    @booking.save
-    redirect_to dashboard_path(current_user), notice: "Votre demande est refusé"
   end
 end
 
