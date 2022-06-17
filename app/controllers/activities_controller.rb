@@ -37,12 +37,13 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update(activity_params)
-    redeirect_to activity_path(@activity)
+    redirect_to activity_path(@activity)
   end
 
   def destroy
+    @category = @activity.category_id
     @activity.destroy
-    redeirect_to activities.path
+    redirect_to category_activities_path(@category)
   end
 
   private
@@ -52,7 +53,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:title, :start_date, :end_date, :description, :location, :meeting_point, :difficulty, :max_of_participant, :category_id, :user_id)
+    params.require(:activity).permit(:title, :start_date, :end_date, :description, :material, :meeting_point, :difficulty, :max_of_participant, :category_id, :user_id)
 
   end
 end

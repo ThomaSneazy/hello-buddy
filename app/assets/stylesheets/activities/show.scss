@@ -17,6 +17,14 @@
   .start-date {
     margin-left: 80px;
   }
+
+  .creator-edit-delete {
+    margin-left: 40px;
+    display: flex;
+    i {
+      margin: 8px;
+    }
+  }
 }
 .activity-container {
   margin: 16px;
