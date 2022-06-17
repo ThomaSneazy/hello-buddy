@@ -2,9 +2,9 @@
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: "Find a category"
+    placeholder: "Cherche ta catégorie"
   %>
-  <%= submit_tag "Search", class: "button" %>
+  <%= submit_tag "Rechercher", class: "btn-search-date" %>
 <% end %>
 
 <% @categories.each do |category| %>
