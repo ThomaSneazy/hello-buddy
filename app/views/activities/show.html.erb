@@ -40,7 +40,7 @@
           <td><%= @activity.difficulty %> /10</td>
           <td><% @activity.bookings.each do |booking| %>
           <%= link_to profiles_path do %>
-          <%= cl_image_tag booking.user.photo.key, class: "avatar-large" %>
+          <%= cl_image_tag booking.user.photo.key, class: "avatar" %>
           <% end %></td>
           <% end %>
         </tr>
