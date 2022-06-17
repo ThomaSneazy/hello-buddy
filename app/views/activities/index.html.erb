@@ -16,8 +16,7 @@
             <p style=""><%= Time.at(activity.start_date).strftime("Le %d/%m/%Y à %H:%M") %></p>
             <p class="first_name_card"><%= activity.user.first_name %></p>
               <div class="avatar-rounded-activity">
-                  <%= image_tag "https://pickaface.net/gallery/avatar/unr_random_160817_0304_2mvqp69.png", class: "avatar-large", alt: "avatar-large" %>
-                <%#= cl_image_tag current_user.photo.key %>
+                  <%= cl_image_tag activity.user.photo.key, class: "avatar-large", alt: "avatar-large" %>
               </div>
         <% end %>
       </div>
