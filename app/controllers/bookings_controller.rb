@@ -43,6 +43,6 @@ end
 
 private
 
-def booking_params
-  params.require(:booking).permit(:validated, :refused, :activity_id, :user_id)
-end
+  def booking_params
+    params.require(:booking).permit(:validated, :refused, :activity_id, :user_id)
+  end

@@ -27,5 +27,3 @@ private
 def review_params
   params.require(:review).permit(:content, :rating, :user)
 end
-
-end
