@@ -37,7 +37,7 @@ vtt.save
 rando = Activity.new(
   title: "Randonnée Calanques Sormiou",
   description: "La description est ici en attendant",
-  meeting_point: "calanques castellane",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 10, 30),
   difficulty: 6,
   max_of_participant: 2,
@@ -49,7 +49,7 @@ rando.save!
 rando2 = Activity.new(
   title: "Randonnée Calanques Sugiton",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 11, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -61,7 +61,7 @@ rando2.save!
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -72,7 +72,7 @@ rando3.save!
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -83,7 +83,7 @@ rando3.save!
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -94,7 +94,7 @@ rando3.save!
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -105,7 +105,7 @@ rando3.save!
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -116,7 +116,7 @@ rando3.save!
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
@@ -128,7 +128,7 @@ rando3.save!
 rando9 = Activity.new(
   title: "Randonnée Calanques Sugiton",
   description: "La description est ici en attendant",
-  meeting_point: "Okok",
+  meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 8, 21, 11, 30),
   difficulty: 3,
   max_of_participant: 2,
