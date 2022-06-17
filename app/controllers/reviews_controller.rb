@@ -20,10 +20,11 @@ class ReviewsController < ApplicationController
     @review.destroy
     redirect_to review_path
   end
-end
 
-private
 
-def review_params
-  params.require(:review).permit(:content, :rating, :user)
+  private
+
+  def review_params
+    params.require(:review).permit(:content, :rating, :user)
+  end
 end
