@@ -60,7 +60,7 @@
                         <% end %>
                      <% end %>
 
-</div>
+  </div>
 
 
   <div id="Activités" class="tabcontent notification-flex" >
@@ -92,9 +92,9 @@
                       <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
                       <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
                     </div>
+                   </div>
               <% end %>
             <% end %>
-            </div>
         <% end %>
 
 
