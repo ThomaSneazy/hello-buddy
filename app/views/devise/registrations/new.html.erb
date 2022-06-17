@@ -9,29 +9,36 @@
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
      <%= f.input :first_name,
+                label: :Prénom,
                 required: true,
                 autofocus: true%>
     <%= f.input :last_name,
+                label: :Nom,
                 required: true,
                 autofocus: true%>
     <%= f.input :phone,
+                label: :Téléphone,
                 required: true,
                 autofocus: true%>
     <%= f.input :address,
+                label: :Adresse,
                 required: true,
                 autofocus: true%>
     <%= f.input :description,
                 autofocus: true%>
     <%= f.input :birth_date,
+                label: :"Date de naissance",
                 autofocus: true%>
     <%= f.input :photo, as: :file,
                 required: true,
                 autofocus: true %>
     <%= f.input :password,
+                label: :"Mot de passe",
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
+                label: :"Confirmation mot de passe",
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
