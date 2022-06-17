@@ -22,15 +22,15 @@ user2.photo.attach(io: img2, filename: "1.jpeg", content_type: 'image/jpeg')
 
 randonnee = Category.new(name: "Randonnée", photo_path: 'rando.jpg')
 randonnee.save
-yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpeg')
+yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpg')
 yoga.save
-tennis = Category.new(name: "Tennis", photo_path: 'tennis.jpeg')
+tennis = Category.new(name: "Tennis", photo_path: 'tennis.jpg')
 tennis.save
-escalade = Category.new(name: "Escalade", photo_path: 'escalade.jpeg')
+escalade = Category.new(name: "Escalade", photo_path: 'escalade.jpg')
 escalade.save
-rafting = Category.new(name: "Rafting", photo_path: 'rafting.jpeg')
+rafting = Category.new(name: "Rafting", photo_path: 'rafting.jpg')
 rafting.save
-vtt = Category.new(name: "VTT", photo_path: 'vtt.jpeg')
+vtt = Category.new(name: "VTT", photo_path: 'vtt.jpg')
 vtt.save
 
 
