@@ -20,7 +20,7 @@ user1.photo.attach(io: img1, filename: "1.jpeg", content_type: 'image/jpeg')
 img2 = URI.open('https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg')
 user2.photo.attach(io: img2, filename: "1.jpeg", content_type: 'image/jpeg')
 
-randonnee = Category.new(name: "Randonnée", photo_path: 'rando.jpeg')
+randonnee = Category.new(name: "Randonnée", photo_path: 'rando.jpg')
 randonnee.save
 yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpeg')
 yoga.save
