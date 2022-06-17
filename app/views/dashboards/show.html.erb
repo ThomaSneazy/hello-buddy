@@ -1,5 +1,7 @@
 <h1>Dashboard</h1>
 
+<%= link_to "Log out", destroy_user_session_path, method: :delete ,  class: "button-34 red" %>
+
 <div class="tab">
   <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Notifications')">Notifications</button>
   <button class="tablinks" onclick="openCity(event, 'Activités')">Activités</button>
