@@ -1,91 +1,142 @@
 <h1>Dashboard</h1>
 
+<div class="tab">
+  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Notifications')">Notifications</button>
+  <button class="tablinks" onclick="openCity(event, 'Activités')">Activités</button>
+  <button class="tablinks" onclick="openCity(event, 'Participations')">Participations</button>
+</div>
 
 
+<div class="notification-container notification-flex">
 
+  <div id="Notifications" class="tabcontent">
+           <p>Notifications d'activités</p>
 
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Notifications</button>
-    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Activités</button>
-    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Participations</button>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <p>Notifications d'activités</p>
+              <% @my_activities.each do |activity| %>
+              <% activity.bookings.each do |booking| %>
+                    <% if !booking.validated  &&  !booking.refused%>
+                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                      <div class="card-header"><%= activity.title %> </div>
+                        <div class="card-body">
+                          <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                          <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                          <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %>
+                          <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %>
+                        </div>
+                        </div>
+                  <% end %>
+                  <% end %>
 
-        <% @my_activities.each do |activity| %>
-         <% activity.bookings.each do |booking| %>
-              <% if !booking.validated  &&  !booking.refused%>
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header"><%= activity.title %> </div>
-            <div class="card-body">
-              <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
-              <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
-              <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %>
-              <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %>
-            </div>
-             <% end %>
-            <% end %>
-        </div>
-        <% end %>
+              <% end %>
 
          <p>Notification de participations</p>
                     <% @my_participations.each do |participation| %>
-                      <ul >
-                        <% if !participation.validated &&  !participation.refused %>
-                          <li> <%= participation.activity.title %> le <%= Time.at(participation.activity.start_date).strftime('%F') %> Organisateur: <%= participation.activity.user.first_name.capitalize %>   <%= link_to booking_path(participation), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <% if !participation.validated &&  !participation.refused %>
+                        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= participation.activity.title %></div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
+                              <p class="card-text">Organisateur: <%= participation.activity.user.first_name.capitalize %></p>
+                              <%= link_to booking_path(participation), method: :delete, data: { confirm: "Are you sure?" } do %>
                                 <i class="fa-solid fa-trash"></i>
-                              <% end %> </li>
+                              <% end %>
+                            </div>
+                        </div>
                         <% end %>
-                      </ul>
-                    <% end %>
-  </div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <p>Activités validées</p>
+                     <% end %>
+
+</div>
+
+
+  <div id="Activités" class="tabcontent notification-flex" >
+
+
+    <p>Activités validées</p>
             <% @my_activities.each do |activity| %>
-              <ul>
-                <% activity.bookings.each do |booking| %>
-                  <% if booking.validated && !booking.refused %>
-                    <li><%= activity.title %> le <%= Time.at(activity.start_date).strftime('%F') %> Participant: <%= booking.user.first_name.capitalize %> </li>
-                  <% end %>
-                <% end %>
-              </ul>
+              <% activity.bookings.each do |booking| %>
+                <% if booking.validated  &&  !booking.refused%>
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                  <div class="card-header"><%= activity.title %> </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                      <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                    </div>
+                  </div>
+              <% end %>
             <% end %>
+        <% end %>
 
-         <p>Activités refusées </p>
-            <% @my_activities.each do |activity| %>
-              <ul>
-                <% activity.bookings.each do |booking| %>
-                  <% if booking.refused && !booking.validated  %>
-                    <li><%= activity.title %> le <%= Time.at(activity.start_date).strftime('%F') %> Participant: <%= booking.user.first_name.capitalize %> </li>
-                  <% end %>
-                <% end %>
-              </ul>
+
+       <p>Activités refusées </p>
+              <% @my_activities.each do |activity| %>
+              <% activity.bookings.each do |booking| %>
+                <% if !booking.validated  &&  booking.refused%>
+                <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                  <div class="card-header"><%= activity.title %> </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                      <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                    </div>
+              <% end %>
             <% end %>
+            </div>
+        <% end %>
+
+
+
   </div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <p>Participations confirmées</p>
-          <% @my_participations.each do |participation| %>
 
-              <ul >
-                <% if participation.validated && !participation.refused %>
-                  <li><%= participation.activity.title %> le <%= Time.at(participation.activity.start_date).strftime('%F') %> Organisateur: <%= participation.activity.user.first_name.capitalize %> </li>
-                <% end %>
-              </ul>
+  <div id="Participations" class="tabcontent notification-flex" >
+          <p>Participations confirmées</p>
 
-            <% end %>
+              <% @my_participations.each do |participation| %>
+                      <% if participation.validated &&  !participation.refused %>
+                        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= participation.activity.title %></div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
+                              <p class="card-text">Organisateur: <%= participation.activity.user.first_name.capitalize %></p>
+                            </div>
+                        </div>
+                        <% end %>
+                     <% end %>
 
         <p>Participations déclinées</p>
-            <% @my_participations.each do |participation| %>
-
-                  <ul>
-                    <% if participation.refused && !participation.validated %>
-                      <li><%= participation.activity.title %> le <%= Time.at(participation.activity.start_date).strftime('%F') %> Organisateur: <%= participation.activity.user.first_name.capitalize %></li>
-                    <% end %>
-                  </ul>
-              <% end %>
-
+               <% @my_participations.each do |participation| %>
+                      <% if !participation.validated &&  participation.refused %>
+                        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= participation.activity.title %></div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
+                              <p class="card-text">Organisateur: <%= participation.activity.user.first_name.capitalize %></p>
+                            </div>
+                        </div>
+                        <% end %>
+                     <% end %>
   </div>
+
+
 </div>
+
+
+
+
+
+
+<script>
+    function openCity(evt, categoryName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(categoryName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultOpen").click();
+</script>
