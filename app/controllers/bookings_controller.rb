@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new
+    @booking = Booking.new()
     @activity = Activity.find(params[:activity_id])
     @booking.activity = @activity
     @booking.user = current_user
@@ -39,10 +39,10 @@ class BookingsController < ApplicationController
     @booking.save
     redirect_to dashboard_path(current_user), notice: "Votre demande est confirmée"
   end
-end
 
-private
+  private
 
-def booking_params
-  params.require(:booking).permit(:validated, :refused, :activity_id, :user_id)
+  def booking_params
+    params.require(:booking).permit(:validated, :refused, :activity_id, :user_id)
+  end
 end

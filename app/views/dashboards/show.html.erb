@@ -1,32 +1,37 @@
 <h1>Dashboard</h1>
 
-<div class="d-flex align-items-start">
-  <div class="nav flex-column nav-pills me-6" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Notification Activités</button>
-    <button class="nav-link" id="v-pills-home2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home2" type="button" role="tab" aria-controls="v-pills-home2" aria-selected="true">Notification Participations</button>
-    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Activités Validées</button>
-    <button class="nav-link" id="v-pills-profile2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile2" type="button" role="tab" aria-controls="v-pills-profile2" aria-selected="false">Activités Refusées</button>
-    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Participations Comfirmées</button>
-    <button class="nav-link" id="v-pills-messages2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages2" type="button" role="tab" aria-controls="v-pills-messages2" aria-selected="false">Participations Déclinées</button>
 
+
+
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Notifications</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Activités</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Participations</button>
   </div>
-  <div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <p>Notifications d'activités</p>
-        <% @my_activities.each do |activity| %>
-          <ul >
-            <% activity.bookings.each do |booking| %>
-              <% if !booking.validated  &&  !booking.refused%>
-                <li><%= activity.title %> le <%= Time.at(activity.start_date).strftime('%F')  %>  Participant: <%= booking.user.first_name.capitalize %>
-                <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %> <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %> </li>
-              <% end %>
-            <% end %>
-          </ul>
-        <% end %>
-    </div>
 
-    <div class="tab-pane fade" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home2-tab">
-                 <p>Notification de participations</p>
+        <% @my_activities.each do |activity| %>
+         <% activity.bookings.each do |booking| %>
+              <% if !booking.validated  &&  !booking.refused%>
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+          <div class="card-header"><%= activity.title %> </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+              <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+              <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %>
+              <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %>
+            </div>
+             <% end %>
+            <% end %>
+        </div>
+        <% end %>
+
+         <p>Notification de participations</p>
                     <% @my_participations.each do |participation| %>
                       <ul >
                         <% if !participation.validated &&  !participation.refused %>
@@ -36,10 +41,9 @@
                         <% end %>
                       </ul>
                     <% end %>
-    </div>
-
-    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <p>Activités validées</p>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <p>Activités validées</p>
             <% @my_activities.each do |activity| %>
               <ul>
                 <% activity.bookings.each do |booking| %>
@@ -49,10 +53,8 @@
                 <% end %>
               </ul>
             <% end %>
-    </div>
 
-    <div class="tab-pane fade" id="v-pills-profile2" role="tabpanel" aria-labelledby="v-pills-profile2-tab">
-            <p>Activités refusées </p>
+         <p>Activités refusées </p>
             <% @my_activities.each do |activity| %>
               <ul>
                 <% activity.bookings.each do |booking| %>
@@ -62,11 +64,9 @@
                 <% end %>
               </ul>
             <% end %>
-
-    </div>
-
-    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-          <p>Participations confirmées</p>
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <p>Participations confirmées</p>
           <% @my_participations.each do |participation| %>
 
               <ul >
@@ -77,11 +77,7 @@
 
             <% end %>
 
-
-    </div>
-
-    <div class="tab-pane fade" id="v-pills-messages2" role="tabpanel" aria-labelledby="v-pills-messages2-tab">
-          <p>Participations déclinées</p>
+        <p>Participations déclinées</p>
             <% @my_participations.each do |participation| %>
 
                   <ul>
@@ -90,7 +86,6 @@
                     <% end %>
                   </ul>
               <% end %>
-    </div>
 
   </div>
 </div>
