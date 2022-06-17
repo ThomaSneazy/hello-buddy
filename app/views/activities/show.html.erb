@@ -57,9 +57,11 @@
           <td><% @activity.bookings.each do |booking| %>
           <%= link_to profiles_path do %>
           <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
-          <% end %></td>
-          
-         
+          <% end %>
+          <% end %>
+          </td>
+
+
         </tr>
       </tbody>
     </table>
