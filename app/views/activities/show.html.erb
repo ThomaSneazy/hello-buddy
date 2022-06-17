@@ -38,7 +38,11 @@
         <tr class="d-flex flex-column">
           <td><%= @activity.material %> </td>
           <td><%= @activity.difficulty %> /10</td>
-          <td><% @activity.bookings.each do |booking| %><%= cl_image_tag booking.user.photo.key, class: "avatar" %><% end %></td>
+          <td><% @activity.bookings.each do |booking| %>
+          <%= link_to profiles_path do %>
+          <%= cl_image_tag booking.user.photo.key, class: "avatar-large" %>
+          <% end %></td>
+          <% end %>
         </tr>
       </tbody>
     </table>
@@ -51,7 +55,4 @@
     <div><a class="button-34 red">Contacter</a></div>
     <div><%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %></div>
   </div>
-
-
-
 </div>
