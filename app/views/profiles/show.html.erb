@@ -10,6 +10,20 @@
   </div>
 </div>
 
+<!--For testing-->
+
+  <%= simple_form_for([@user, @review]) do  |f| %>
+              <%= f.input :content, placeholder: "Notez votre buddy" %>
+              <%=  f.input :rating, as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
+              <%= f.submit class:"btn btn-flat" %>
+            <% end %>
+
+<% @user.reviews.each do |review| %>
+  <p><%= review.content %></p>
+  <p><%= review.rating %> / 5</p>
+<% end %>
+
+<!--------------------------->
 
 <div>
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700&display=swap" rel="stylesheet">
@@ -38,7 +52,11 @@
     </span>
   </label>
 
-  <input name="nav" type="radio" class="about-radio" id="about" />
+
+
+
+
+  <%# <input name="nav" type="radio" class="about-radio" id="about" /> %>
   <div class="page about-page">
     <div class="page-contents">
       <h1>About</h1>
