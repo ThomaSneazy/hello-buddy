@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_074605) do
 
   create_table "bookings", force: :cascade do |t|
     t.boolean "validated", default: false
-    t.bigint "activity_id"
-    t.bigint "user_id"
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "refused", default: false
