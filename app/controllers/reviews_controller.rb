@@ -1,16 +1,15 @@
 class ReviewsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
-    @review = @Review.new
+    @review = Review.new
   end
 
   def create
-    @user = User.find(params[:user_id])
     @review = Review.new(review_params)
-    @review.user = @user
+    @review.user = current_user
     if @review.save
-      redirect_to review_path(@review)
+      redirect_to new_review_path
     else
+      flash[:alert] = "Something went wrong."
       render :new
     end
   end
@@ -21,10 +20,9 @@ class ReviewsController < ApplicationController
     redirect_to review_path
   end
 
-
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :user)
+    params.require(:review).permit(:content, :rating, :user, :user_id)
   end
 end
