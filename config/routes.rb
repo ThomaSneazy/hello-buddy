@@ -15,8 +15,13 @@ Rails.application.routes.draw do
   end
   resources :activities do
     resources :bookings, only: %i[create]
+    resources :chatrooms, only: %i[create show] do
+      resources :messages, only: :create
+    end
   end
   resources :bookings, only: %i[show destroy]
   resources :activities, only: %i[destroy]
-
+  # resources :chatrooms, only: %i[create show] do
+  #   resources :messages, only: :create
+  # end
 end
