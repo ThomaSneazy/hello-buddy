@@ -1,41 +1,94 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
   <div class="container position-relative">
-
-
     <div class="position-absolute top-50 start-50 translate-middle mt-3">
-        <div class=" image d-flex flex-column justify-content-center align-items-center">
+      <div class=" image d-flex flex-column justify-content-center align-items-center">
+        <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+        <span class="name-title text-white text-center mt-3">   <%= @user.first_name %>
+        <%= @user.last_name %></span>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!--For testing-->
 
-          <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+  <%= simple_form_for([@user, @review]) do  |f| %>
+              <%= f.input :content, placeholder: "Notez votre buddy" %>
+              <%=  f.input :rating, as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
+              <%= f.submit class:"btn btn-flat" %>
+            <% end %>
 
+<% @user.reviews.each do |review| %>
+  <p><%= review.content %></p>
+  <p><%= review.rating %> / 5</p>
+<% end %>
 
-          <span class="name-title text-white text-center mt-3">   <%= @user.first_name %>
-          <%= @user.last_name %></span>
+<!--------------------------->
 
+<div>
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700&display=swap" rel="stylesheet">
+
+  <div class="layout">
+  <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
+    <div class="page home-page">
+      <div class="page-contents">
         <div class="infos">
-          <div class="text mt-3 text-start text-white ">
+          <div class="text mt-3 text-start text-dark ">
             <i class="fa-solid fa-location-dot">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-white"><%= @user.address %></span>
+            <span class="text-dark"><%= @user.address %></span>
             <br>
-            <i class="fa-solid fa-phone text-white ">&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-white"><%= @user.phone %></span>
+            <i class="fa-solid fa-phone text-dark ">&nbsp;&nbsp;&nbsp;</i>
+            <span class="text-dark"><%= @user.phone %></span>
             <br>
-            <i class="fa-solid fa-image-portrait text-white ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-white"><%= Date.new(Date.today.year() - 2000).year %> ans </span>
+            <i class="fa-solid fa-image-portrait text-dark ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+            <span class="text-dark"><%= Date.new(Date.today.year() - 2000).year %> ans </span>
           </div>
         </div>
-
+      </div>
     </div>
+    <label class="nav" for="home">
+    <span>
+      Profil
+    </span>
+  </label>
 
-  <%# <div class="card mb-2">  %>
-     <%# <div class="card-body mx-2">  %>
-       <%# <%= simple_form_for([@user, @review], remote: true) do  |f| %>
-        <%# <%= f.input :content, placeholder: "How was the trip ?"%>
-         <%# <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "How would you rate the trip ?", input_html: { data: { controller: "jquery-bar-rating" } } %>
-         <%# <%= f.submit class:"btn btn-flat" %>
-      <%# <% end %>
-   <%# </div> %>
- <%# </div> %>
 
+
+
+
+  <%# <input name="nav" type="radio" class="about-radio" id="about" /> %>
+  <div class="page about-page">
+    <div class="page-contents">
+      <h1>About</h1>
+      <p>Amet consectetur </p>
+      <div class="m-5 p-5">
+        <div class="card mb-2">
+          <div class="card-body mx-2">
+            <%= simple_form_for([@user, @review], remote: true) do  |f| %>
+              <%= f.input :content, placeholder: "Notez votre buddy" %>
+              <%=  f.input :rating, as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
+              <%= f.submit class:"btn btn-flat" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+    <label class="nav" for="about">
+      <span>
+        Avis
+      </span>
+    </label>
+  <input name="nav" type="radio" class="contact-radio" id="contact" />
+  <div class="page contact-page">
+    <div class="page-contents">
+      <p>S'est déjà battue à mains nues avec un ours</p>
+    </div>
+    </div>
+    <label class="nav" for="contact">
+    <span>
+      Anecdote
+    </span>
+    </label>
+    </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get 'profiles/:id', to: 'profiles#show', as: :profiles
+
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
   patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
   patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
@@ -15,8 +16,13 @@ Rails.application.routes.draw do
   end
   resources :activities do
     resources :bookings, only: %i[create]
+    resources :chatrooms, only: %i[create show] do
+      resources :messages, only: :create
+    end
+  end
+  resources :users do
+    resources :reviews, only: %i[new create destroy]
   end
   resources :bookings, only: %i[show destroy]
   resources :activities, only: %i[destroy]
-
 end
