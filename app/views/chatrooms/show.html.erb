@@ -2,14 +2,21 @@
 <div class="container chatroom"
  data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.name %></h1>
-
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      </div>
-    <% end %>
+  <div class="messagerie-title">
+    <h2>#<%= @chatroom.name %></h2>
   </div>
+
+
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <div class="discussion">
+        <% @chatroom.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+    </div>
+
+
+
 </div>
 
 <%= simple_form_for [@activity, @chatroom, @message],
@@ -21,5 +28,5 @@
     placeholder: "Message ##{@chatroom.name}",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "" %>
+  <%= f.submit "Send", class: "button-34 green" %>
 <% end %>
