@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  get 'profiles/:id', to: 'profiles#show', as: :profiles
+  # get 'profiles/:id', to: 'profiles#show', as: :profiles
+  # post 'users/:id/:reviews', to: 'users#reviews', as: :reviews
+  resources :profiles, only: :show do
+    resources :reviews, only: %i[new create destroy]
+  end
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
   patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
   patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
