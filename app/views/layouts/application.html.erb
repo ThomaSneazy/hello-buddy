@@ -10,15 +10,41 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Space+Mono&display=swap" rel="stylesheet">
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/header' %>
+    <% if user_signed_in? %>
+    <%= render 'shared/navbar' %>
+
+
+    <% end %>
+
+
+
+     <%# <% if notice %>
+      <%# <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+        <%# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+    <%# <% if alert %>
+      <%# <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <%= alert %>
+        <%# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
 
     <%= yield %>
+    <% if user_signed_in? %>
+    <div class="placehold-navbar">&nbsp;</div>
+    <% end %>
   </body>
 </html>

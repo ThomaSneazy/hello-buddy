@@ -1,14 +1,24 @@
 <div class="main-container">
-
-    <p style="color: red">for testing only current_user.id <%= current_user.id %></p>
-
   <div class="creator-container">
+
 
       <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
       </div>
       <div class="creator-info">
-          <p class="start-date"><%= @activity.start_date.strftime('%F')  %></p>
+          <p class="start-date"><%= Time.at(@activity.start_date).strftime('%F')  %></p>
+          <div style="display:flex">
           <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
+            <% if @activity.user.id == current_user.id  %>
+              <div class="creator-edit-delete">
+                <%= link_to edit_activity_path(@activity) do %>
+                  <i class="fa-solid fa-pencil"></i>
+                  <% end %>
+                  <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <i class="fa-solid fa-trash"></i>
+                  <% end %>
+              </div>
+            <% end %>
+          </div>
           <div class="creator-rating">
             <% @avg_rating.times do %>
               <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
@@ -17,16 +27,18 @@
               <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
             <% end %>
           </div>
+
+
       </div>
 
   </div>
 
   <div class="activity-container">
     <h3><%= @activity.title %></h3>
-    <p class="start-hour"><%= @activity.start_date.strftime('%H')  %> H <%= @activity.start_date.strftime('%M') %></p>
+    <p class="start-hour"><%= Time.at(@activity.start_date).strftime('%H')  %> H <%= Time.at(@activity.start_date).strftime('%M') %></p>
 
     <div class="user-description">
-      <p><%= @activity.user.description %></p>
+      <p><%= @activity.description %></p>
     </div>
 
     <div class="activity-info">
@@ -39,29 +51,33 @@
           <td>Participants:</td>
         </tr>
         <tr class="d-flex flex-column">
-          <td><%= @activity.material %> </td>
+          <td><%= @activity.material || '...'%> </td>
           <td><%= @activity.difficulty %> /10</td>
-          <td><% @activity.bookings.each do |booking| %><%= cl_image_tag booking.user.photo.key, class: "avatar" %><% end %></td>
+
+          <td><% @activity.bookings.each do |booking| %>
+          <%= link_to profiles_path do %>
+          <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
+          <% end %>
+          <% end %>
+          </td>
+
+
         </tr>
       </tbody>
     </table>
-        <%# <p>Matériel requis:</p> <p><%= @activity.material %>
-        <%# <p>Difficultés: </p> <p><%= @activity.difficulty %>
-
-        <%# <p>Participants: </p>
-          <% @activity.bookings.each do |booking| %>
-            <%# <div><%= cl_image_tag booking.user.photo.key, class: "avatar" %>
-          <%# <% end %>
-
 
     </div>
 </div>
 
-
+  <% unless @activity.user.id == current_user.id %>
   <div class="btn-container">
     <div><a class="button-34 red">Contacter</a></div>
     <div><%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %></div>
   </div>
+
+  <% end %>
+
+
 
 
 

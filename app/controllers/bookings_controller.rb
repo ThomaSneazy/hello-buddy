@@ -23,19 +23,26 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to profile_path, alert: "Your booking is canceled"
+    redirect_to dashboard_path(current_user), alert: "Votre demande est supprimée"
+  end
+
+  def refused
+    @booking = Booking.find(params[:id])
+    @booking.refused = true
+    @booking.save
+    redirect_to dashboard_path(current_user), notice: "Votre demande est refusée"
   end
 
   def validation
     @booking = Booking.find(params[:id])
     @booking.validated = true
     @booking.save
-    redirect_to profile_path, notice: "Your booking is confirmed"
+    redirect_to dashboard_path(current_user), notice: "Votre demande est confirmée"
   end
-end
 
-private
+  private
 
-def booking_params
-  params.require(:booking).permit(:validated, :activity_id, :user_id)
+  def booking_params
+    params.require(:booking).permit(:validated, :refused, :activity_id, :user_id)
+  end
 end

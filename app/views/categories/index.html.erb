@@ -1,3 +1,11 @@
+<%= form_tag categories_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Cherche ta catégorie"
+  %>
+  <%= submit_tag "Rechercher", class: "btn-search-date" %>
+<% end %>
 
 <% @categories.each do |category| %>
   <%= link_to category_activities_path(category), :action => 'go' do %>

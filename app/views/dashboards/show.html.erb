@@ -1,0 +1,159 @@
+<div class="banner">
+    <div class="container position-relative">
+
+            <span class="name-title text-white text-center mt-3"><%= current_user.first_name %> <%= current_user.last_name %></span>
+            <br>
+      <div class="position-absolute top-50 start-50 translate-middle mt-3">
+        <div class=" image d-flex flex-column justify-content-center align-items-center">
+
+            <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path (current_user.photo.key)%>')">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="tab">
+  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Notifications')">Notifications</button>
+  <button class="tablinks" onclick="openCity(event, 'Activités')">Activités</button>
+  <button class="tablinks" onclick="openCity(event, 'Participations')">Participations</button>
+</div>
+
+
+<div class="notification-container notification-flex">
+
+  <div id="Notifications" class="tabcontent">
+           <p>Notifications d'activités</p>
+
+              <% @my_activities.each do |activity| %>
+              <% activity.bookings.each do |booking| %>
+                    <% if !booking.validated  &&  !booking.refused%>
+                    <div class="card text-black bg-white mb-3" style="max-width: 18rem;">
+                      <div class="card-header"><%= activity.title %> </div>
+                        <div class="card-body">
+                          <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                          <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                          <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %>
+                          <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %>
+                        </div>
+                        </div>
+                  <% end %>
+                  <% end %>
+
+              <% end %>
+
+         <p>Notification de participations</p>
+                    <% @my_participations.each do |participation| %>
+                      <% if !participation.validated &&  !participation.refused %>
+                        <div class="card text-black bg-info mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= participation.activity.title %></div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
+                              <p class="card-text">Organisateur: <%= participation.activity.user.first_name.capitalize %></p>
+                              <%= link_to booking_path(participation), method: :delete, data: { confirm: "Are you sure?" } do %>
+                                <i class="fa-solid fa-trash"></i>
+                              <% end %>
+                            </div>
+                        </div>
+                        <% end %>
+                     <% end %>
+
+  </div>
+
+
+  <div id="Activités" class="tabcontent notification-flex" >
+
+
+    <p>Activités validées</p>
+            <% @my_activities.each do |activity| %>
+              <% activity.bookings.each do |booking| %>
+                <% if booking.validated  &&  !booking.refused%>
+                <div class="card text-black bg-success mb-3" style="max-width: 18rem;">
+                  <div class="card-header"><%= activity.title %> </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                      <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                    </div>
+                  </div>
+              <% end %>
+            <% end %>
+        <% end %>
+
+
+       <p>Activités refusées </p>
+              <% @my_activities.each do |activity| %>
+              <% activity.bookings.each do |booking| %>
+                <% if !booking.validated  &&  booking.refused%>
+                <div class="card text-black bg-danger mb-3" style="max-width: 18rem;">
+                  <div class="card-header"><%= activity.title %> </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                      <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                    </div>
+                   </div>
+              <% end %>
+            <% end %>
+        <% end %>
+
+
+
+  </div>
+
+  <div id="Participations" class="tabcontent notification-flex" >
+          <p>Participations confirmées</p>
+
+              <% @my_participations.each do |participation| %>
+                      <% if participation.validated &&  !participation.refused %>
+                        <div class="card text-black bg-success mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= participation.activity.title %></div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
+                              <p class="card-text">Organisateur: <%= participation.activity.user.first_name.capitalize %></p>
+                            </div>
+                        </div>
+                        <% end %>
+                     <% end %>
+
+        <p>Participations déclinées</p>
+               <% @my_participations.each do |participation| %>
+                      <% if !participation.validated &&  participation.refused %>
+                        <div class="card rounded text-white bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-header"><%= participation.activity.title %></div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
+                              <p class="card-text">Organisateur: <%= participation.activity.user.first_name.capitalize %></p>
+                            </div>
+                        </div>
+                        <% end %>
+                     <% end %>
+  </div>
+
+
+</div>
+
+<div class="btn-logout"><%= link_to "Log out", destroy_user_session_path, method: :delete,  class: "button-34 black text-black" %>
+</div>
+
+
+
+
+
+<script>
+    function openCity(evt, categoryName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(categoryName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultOpen").click();
+</script>
