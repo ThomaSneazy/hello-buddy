@@ -21,6 +21,8 @@ class ActivitiesController < ApplicationController
     @activity.user = current_user
     @activity.save
     if @activity.save
+      @chatroom = Chatroom.new(name: "Messagerie #{@activity.title}", user_id: @activity.user.id, activity_id: @activity.id)
+      @chatroom.save
       redirect_to activity_path(@activity)
     else
       render :new

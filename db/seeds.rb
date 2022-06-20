@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
+Chatroom.destroy_all
 Booking.destroy_all
 Activity.destroy_all
 Category.destroy_all
@@ -46,6 +47,9 @@ rando = Activity.new(
 )
 rando.save!
 
+chat_rando = Chatroom.new(name: "Messagerie #{rando.title}", user_id: rando.user.id, activity_id: rando.id)
+chat_rando.save
+
 rando2 = Activity.new(
   title: "Randonnée Calanques Sugiton",
   description: "La description est ici en attendant",
@@ -58,61 +62,9 @@ rando2 = Activity.new(
 )
 rando2.save!
 
-rando3 = Activity.new(
-  title: "Randonnée Calanques Morgiou",
-  description: "La description est ici en attendant",
-  meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 21, 8, 30),
-  difficulty: 3,
-  max_of_participant: 2,
-  category_id: randonnee.id,
-  user_id: user2.id
-)
-rando3.save!
-rando3 = Activity.new(
-  title: "Randonnée Calanques Morgiou",
-  description: "La description est ici en attendant",
-  meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 21, 8, 30),
-  difficulty: 3,
-  max_of_participant: 2,
-  category_id: randonnee.id,
-  user_id: user2.id
-)
-rando3.save!
-rando3 = Activity.new(
-  title: "Randonnée Calanques Morgiou",
-  description: "La description est ici en attendant",
-  meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 21, 8, 30),
-  difficulty: 3,
-  max_of_participant: 2,
-  category_id: randonnee.id,
-  user_id: user2.id
-)
-rando3.save!
-rando3 = Activity.new(
-  title: "Randonnée Calanques Morgiou",
-  description: "La description est ici en attendant",
-  meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 21, 8, 30),
-  difficulty: 3,
-  max_of_participant: 2,
-  category_id: randonnee.id,
-  user_id: user2.id
-)
-rando3.save!
-rando3 = Activity.new(
-  title: "Randonnée Calanques Morgiou",
-  description: "La description est ici en attendant",
-  meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 21, 8, 30),
-  difficulty: 3,
-  max_of_participant: 2,
-  category_id: randonnee.id,
-  user_id: user2.id
-)
-rando3.save!
+chat_rando2 = Chatroom.new(name: "Messagerie #{rando2.title}", user_id: rando2.user.id, activity_id: rando2.id)
+chat_rando2.save
+
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
   description: "La description est ici en attendant",
@@ -125,6 +77,84 @@ rando3 = Activity.new(
 )
 rando3.save!
 
+chat_rando3 = Chatroom.new(name: "Messagerie #{rando3.title}", user_id: rando3.user.id, activity_id: rando3.id)
+chat_rando3.save
+
+rando3 = Activity.new(
+  title: "Randonnée Calanques Morgiou",
+  description: "La description est ici en attendant",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 21, 8, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user2.id
+)
+rando3.save!
+
+chat_rando3 = Chatroom.new(name: "Messagerie #{rando3.title}", user_id: rando3.user.id, activity_id: rando3.id)
+chat_rando3.save
+
+rando3 = Activity.new(
+  title: "Randonnée Calanques Morgiou",
+  description: "La description est ici en attendant",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 21, 8, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user2.id
+)
+rando3.save!
+
+chat_rando3 = Chatroom.new(name: "Messagerie #{rando3.title}", user_id: rando3.user.id, activity_id: rando3.id)
+chat_rando3.save
+
+rando3 = Activity.new(
+  title: "Randonnée Calanques Morgiou",
+  description: "La description est ici en attendant",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 21, 8, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user2.id
+)
+rando3.save!
+
+chat_rando3 = Chatroom.new(name: "Messagerie #{rando3.title}", user_id: rando3.user.id, activity_id: rando3.id)
+chat_rando3.save
+
+rando3 = Activity.new(
+  title: "Randonnée Calanques Morgiou",
+  description: "La description est ici en attendant",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 21, 8, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user2.id
+)
+rando3.save!
+
+chat_rando3 = Chatroom.new(name: "Messagerie #{rando3.title}", user_id: rando3.user.id, activity_id: rando3.id)
+chat_rando3.save
+
+rando3 = Activity.new(
+  title: "Randonnée Calanques Morgiou",
+  description: "La description est ici en attendant",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 21, 8, 30),
+  difficulty: 3,
+  max_of_participant: 2,
+  category_id: randonnee.id,
+  user_id: user2.id
+)
+rando3.save!
+
+chat_rando3 = Chatroom.new(name: "Messagerie #{rando3.title}", user_id: rando3.user.id, activity_id: rando3.id)
+chat_rando3.save
+
 rando9 = Activity.new(
   title: "Randonnée Calanques Sugiton",
   description: "La description est ici en attendant",
@@ -136,3 +166,6 @@ rando9 = Activity.new(
   user_id: user1.id
 )
 rando9.save!
+
+chat_rando9 = Chatroom.new(name: "Messagerie #{rando9.title}", user_id: rando9.user.id, activity_id: rando9.id)
+chat_rando9.save

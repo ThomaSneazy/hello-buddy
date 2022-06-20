@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_100639) do
+ActiveRecord::Schema.define(version: 2022_06_20_074605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_100639) do
     t.text "location"
     t.string "meeting_point"
     t.integer "difficulty"
-    t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_100639) do
 
   create_table "bookings", force: :cascade do |t|
     t.boolean "validated", default: false
-    t.bigint "activity_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "activity_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "refused", default: false
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_100639) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_chatrooms_on_activity_id"
     t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
@@ -120,7 +122,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_100639) do
     t.string "address"
     t.string "phone"
     t.string "description"
-    t.date "birth_date"
+    t.integer "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_100639) do
   add_foreign_key "activities", "users"
   add_foreign_key "bookings", "activities"
   add_foreign_key "bookings", "users"
+  add_foreign_key "chatrooms", "activities"
   add_foreign_key "chatrooms", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"

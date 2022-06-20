@@ -1,0 +1,32 @@
+<!-- app/views/chatrooms/show.html.erb -->
+<div class="container chatroom"
+ data-controller="chatroom-subscription"
+  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <div class="messagerie-title">
+    <h2>#<%= @chatroom.name %></h2>
+  </div>
+
+
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <div class="discussion">
+        <% @chatroom.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+</div>
+
+<%= simple_form_for [@activity, @chatroom, @message],
+  remote: true,
+  html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message ##{@chatroom.name}",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "button-34 green" %>
+<% end %>
