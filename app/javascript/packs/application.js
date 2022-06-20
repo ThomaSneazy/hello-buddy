@@ -10,6 +10,9 @@ import "channels"
 import "controllers"
 import "bootstrap"
 import { initSelect2 } from '../components/init_select2';
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();
 
 Rails.start()
 Turbolinks.start()
