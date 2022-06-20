@@ -19,6 +19,7 @@
 
 </div>
 
+<div class="message-input">
 <%= simple_form_for [@activity, @chatroom, @message],
   remote: true,
   html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
@@ -30,3 +31,4 @@
   %>
   <%= f.submit "Send", class: "button-34 green" %>
 <% end %>
+</div>
