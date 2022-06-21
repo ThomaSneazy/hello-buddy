@@ -30,14 +30,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.refused = true
     @booking.save
-    redirect_to dashboard_path(current_user), notice: "Votre demande est refusée"
+    redirect_to dashboard_path(current_user) + '?confirmed=true', notice: "Votre demande est refusée"
   end
 
   def validation
     @booking = Booking.find(params[:id])
     @booking.validated = true
     @booking.save
-    redirect_to dashboard_path(current_user), notice: "Votre demande est confirmée"
+    redirect_to dashboard_path(current_user) + '?confirmed=true' , notice: "Votre demande est confirmée"
   end
 
   private
