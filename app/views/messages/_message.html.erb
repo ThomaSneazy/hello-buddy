@@ -1,14 +1,10 @@
+<div class="regular cont-<%=message.user.id%>">
+  <div class="message-box msg-<%= message.user.id %> bubble recipient <%= cycle("first", "middle","last") %>">
 
-
-<% if message.user.id == current_user.id %>
-<div class="bubble sender1 <%= cycle("first", "middle","last") %>" id="message-<%= message.id %>">
-  <% else %>
-<div class="bubble recipient <%= cycle("first", "middle","last") %>" id="message-<%= message.id %>">
-<% end %>
-        <small>
+      <small>
           <strong><%= message.user.first_name.capitalize %></strong>
           <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
         </small>
         <p><%= message.content %></p>
-
+  </div>
 </div>

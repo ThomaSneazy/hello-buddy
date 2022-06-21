@@ -16,6 +16,18 @@
     <link rel="icon" type="image/x-icon" href="app/assets/images/hb-favicon.png">
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+     <style>
+      <%= ".msg-#{current_user&.id}" %> {
+      background-color: #007bff !important;
+      padding: 10px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+      /* display: flex; */
+        /* justify-content: flex-start !important; */
+        float: left !important;
+        margin-left: -24px !important;
+      }
+    </style>
   </head>
 
   <body>
