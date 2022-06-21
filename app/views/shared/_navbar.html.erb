@@ -30,13 +30,18 @@
 	</div>
 	<div class="mobile-bottom-nav__item">
 		<div class="mobile-bottom-nav__item-content">
+
     <% if  current_user.pending_bookings_number.positive? %>
-      <i class="fa-solid fa-bell "></i>
-      <%= current_user.pending_bookings_number %>
+        <%= link_to dashboard_path(current_user) do %>
+          <i class="fa-solid fa-bell"></i>
+          <div class="icon-notif">
+          <%= current_user.pending_bookings_number %>
+          </div>
+          <% end %>
     <% else %>
-      <i class="fa-solid fa-circle "></i>
-      <%= current_user.pending_bookings_number %>
+      <i class="fa-solid fa-bell"></i>
     <% end %>
+
 <%#  %>
 
 		</div>
