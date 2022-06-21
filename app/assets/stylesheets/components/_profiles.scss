@@ -78,3 +78,9 @@ input[type="radio"]:checked + .page{
   display: flex;
   justify-content: center;
 }
+
+// commentaires
+.card {
+  display: grid;
+  grid-template-rows: max-content 200px 1fr;
+}

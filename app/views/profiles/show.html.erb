@@ -36,7 +36,7 @@
     <span>
       Profil
     </span>
-  </label>
+    </label>
 
 
   <input name="nav" type="radio" class="about-radio" id="about" />
@@ -46,10 +46,12 @@
       <div class="flex-container">
         <div class="flex-item">
           <% @user.reviews.each do |review| %>
-              <p><%= review.user.first_name %></p>
-              <p><%= review.content %></p>
-              <p><%= review.rating %> / 5</p>
+          <div class="card">
+            <p><%= review.user.first_name %></p>
+            <p><%= review.content %></p>
+            <p><%= review.rating %> / 5</p>
             <% end %>
+          </div>
         </div>
 
         <div class="flex-item">
@@ -72,12 +74,12 @@
   <input name="nav" type="radio" class="contact-radio" id="contact" />
     <div class="page contact-page">
       <div class="page-contents">
-        <p>S'est déjà battue à mains nues avec un ours</p>
+        <p>User.description</p>
       </div>
     </div>
     <label class="nav" for="contact">
     <span>
-      Anecdote
+      Description
     </span>
     </label>
     </div>
