@@ -42,14 +42,31 @@
       <i class="fa-solid fa-bell"></i>
     <% end %>
 
-<%#  %>
-
 		</div>
 	</div>
 
 	<div class="mobile-bottom-nav__item">
 		<div class="mobile-bottom-nav__item-content">
-			<a href="#"><i class="fa-solid fa-comment "></i></a>
+    <% if current_user.pending_bookings_validated.count.positive? && !current_user.pending_bookings_validated.last.pending %>
+
+      <%= link_to pending_path(current_user.pending_bookings_validated.last),method: :patch  do %>
+        <i class="fa-solid fa-comment validated" style='color: red'></i>
+      <% end %>
+
+    <% else %>
+			<a href="#"><i class="fa-solid fa-comment"></i></a>
+    <% end %>
 		</div>
 	</div>
 </nav>
+
+<%#
+<script>
+
+    const button = document.querySelector('.validated')
+    button.addEventListener('click', () => {
+      fetch('')
+    })
+
+
+</script> %>
