@@ -40,6 +40,13 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path(current_user) + '?confirmed=true' , notice: "Votre demande est confirmée"
   end
 
+  def pending
+    @booking = Booking.find(params[:id])
+    @booking.pending = true
+    @booking.save
+    redirect_to booking_path(@booking)
+  end
+
   private
 
   def booking_params

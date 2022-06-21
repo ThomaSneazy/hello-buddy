@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
   patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
   patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
+  patch 'bookings/:id/pending', to: 'bookings#pending', as: :pending
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routin, .html
   resources :categories do
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews, only: %i[new create destroy]
   end
-  resources :bookings, only: %i[show destroy]
+  resources :bookings, only: %i[show destroy update]
   resources :activities, only: %i[destroy]
 end

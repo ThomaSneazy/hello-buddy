@@ -22,4 +22,11 @@ class User < ApplicationRecord
     end
     return pending_bookings.count
   end
+
+  def pending_bookings_validated
+    user_bookings = self.bookings
+    user_bookings.select do |booking|
+      booking.validated && !booking.refused
+    end
+  end
 end
