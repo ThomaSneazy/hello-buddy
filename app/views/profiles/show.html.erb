@@ -1,9 +1,11 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+<div class="banner">
   <div class="container position-relative">
-    <div class="position-absolute top-50 start-50 translate-middle mt-3">
+    <div class="position-absolute top-50 start-50 translate-middle mt-0">
       <div class=" image d-flex flex-column justify-content-center align-items-center">
-        <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
-        <span class="name-title text-white text-center mt-3">   <%= @user.first_name %>
+        <%# <p class="avatar-large" style="background-image: url('<%= cl_image_path @user.photo.key , height: 300, crop: :fill %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-large"%>
+        <span class="name-title text-white text-center mt-3 mb-5">
+        <%= @user.first_name %>
         <%= @user.last_name %></span>
       </div>
     </div>
@@ -11,92 +13,58 @@
 </div>
 
 
-<div>
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700&display=swap" rel="stylesheet">
+<div class="container" style="margin-top: 10px;">
+<!-- Nav tabs -->
+    <ul class="nav nav-tabs d-flex justify-content-between bg-light text-dark">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#msg">Profil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#pro">Avis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#set">Description</a>
+      </li>
+    </ul>
+  </div>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane container active text-center mt-5" id="msg">
+    <i class="fa-solid fa-location-dot">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+      <span class="text-dark"><%= @user.address %></span>
+      <br>
+      <i class="fa-solid fa-phone text-dark ">&nbsp;&nbsp;&nbsp;</i>
+      <span class="text-dark"><%= @user.phone %></span>
+      <br>
+      <i class="fa-solid fa-image-portrait text-dark ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+      <span class="text-dark"><%= Date.new(Date.today.year() - 2000).year %> ans </span></div>
+  <div class="tab-pane container fade" id="pro">
+   <% @user.reviews.each do |review| %>
+          <div class="comment mb-3">
+            <div class="pb-3">
+              <p>Noté par : <%= review.user.first_name %></p>
+              <%= cl_image_tag @user.photo.key, class: "avatar" %>
+            </div>
 
-  <div class="layout">
-  <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
-    <div class="page home-page">
-      <div class="page-contents">
-        <div class="infos">
-          <div class="text mt-3 text-start text-dark ">
-            <i class="fa-solid fa-location-dot">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-dark"><%= @user.address %></span>
-            <br>
-            <i class="fa-solid fa-phone text-dark ">&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-dark"><%= @user.phone %></span>
-            <br>
-            <i class="fa-solid fa-image-portrait text-dark ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-dark"><%= Date.new(Date.today.year() - 2000).year %> ans </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <label class="nav" for="home">
-    <span>
-      Profil
-    </span>
+            <div class="sectioncomment mb-3">
+              <%= review.content %>
+            </div>
 
-    </label>
-  </label>
-
-
-  <%# <div class="card mb-2">  %>
-     <%# <div class="card-body mx-2">  %>
-       <%# <%= simple_form_for([@user, @review], remote: true) do  |f| %>
-        <%# <%= f.input :content, placeholder: "How was the trip ?"%>
-         <%# <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "How would you rate the trip ?", input_html: { data: { controller: "jquery-bar-rating" } } %>
-         <%# <%= f.submit class:"btn btn-flat" %>
-      <%# <% end %>
-   <%# </div> %>
- <%# </div> %>
-
-
-
-
-  <input name="nav" type="radio" class="about-radio" id="about" />
-  <div class="page about-page">
-    <div class="page-contents">
-
-      <div class="flex-container">
-        <div class="flex-item">
-          <% @user.reviews.each do |review| %>
-          <div class="card">
-            <p><%= review.user.first_name %></p>
-            <p><%= review.content %></p>
-            <p><%= review.rating %> / 5</p>
+            <p class="text-end"><%= review.rating %> / 5</p>
             <% end %>
           </div>
         </div>
+      </div>
 
         <div class="flex-item">
           <%= simple_form_for([@user, @review], remote: true) do  |f| %>
               <%= f.input :content, label: "Laisse un avis à ton buddy", placeholder: "Ecrire ici" %>
               <%=  f.input :rating, label: "Note ton buddy", as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
-              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button type="submit" class="button">Envoyer</button>
             <% end %>
-        </div>
-      </div>
-
-    </div>
+        </div></div>
+  <div class="tab-pane container fade" id="set">This is a setting tab.
+  <%= @user.description %>
   </div>
-
-    <label class="nav" for="about">
-      <span>
-        Avis
-      </span>
-    </label>
-  <input name="nav" type="radio" class="contact-radio" id="contact" />
-    <div class="page contact-page">
-      <div class="page-contents">
-        <p>User.description</p>
-      </div>
-    </div>
-    <label class="nav" for="contact">
-    <span>
-      Description
-    </span>
-    </label>
-    </div>
-  </div>
+</div>
 </div>
