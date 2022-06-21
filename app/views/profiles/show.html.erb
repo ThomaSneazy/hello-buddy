@@ -60,6 +60,33 @@
           <%= simple_form_for([@user, @review], remote: true) do  |f| %>
               <%= f.input :content, label: "Laisse un avis à ton buddy", placeholder: "Ecrire ici" %>
               <%=  f.input :rating, label: "Note ton buddy", as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
+              <button type="submit" class="btn-valider">Valider</button>
+            <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <label class="nav" for="about">
+      <div class="page avis-page">
+        <span>
+          Avis
+        </span>
+      </div>
+    </label>
+  <input name="nav" type="radio" class="contact-radio" id="contact" />
+    <div class="page contact-page">
+      <div class="page-contents">
+        <p>User.description</p>
+      </div>
+    </div>
+    <label class="nav" for="contact">
+    <span>
+      Description
+    </span>
+    </label>
+    </div>
               <button type="submit" class="button">Envoyer</button>
             <% end %>
         </div></div>

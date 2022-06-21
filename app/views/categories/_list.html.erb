@@ -1,0 +1,9 @@
+<div data-refresh-list-target="list">
+    <% categories.each do |category| %>
+      <%= link_to category_activities_path(category), :action => 'go' do %>
+        <div class="card-category", style= "background-image: linear-gradient( rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url('<%= image_path(category.photo_path) %>')">
+          <h3><%= category.name %></h3>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
