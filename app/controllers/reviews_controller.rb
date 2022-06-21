@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
     redirect_to review_path
   end
 
-
   private
 
   def review_params

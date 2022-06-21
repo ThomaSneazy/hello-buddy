@@ -1,16 +1,14 @@
-<%= form_tag categories_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Cherche ta catégorie"
-  %>
-  <%= submit_tag "Rechercher", class: "btn-search-date" %>
-<% end %>
-
-<% @categories.each do |category| %>
-  <%= link_to category_activities_path(category), :action => 'go' do %>
-    <div class="card-category", style= "background-image: linear-gradient( rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url('<%= image_path(category.photo_path) %>')">
-      <h3><%= category.name %></h3>
-    </div>
+<div data-controller="refresh-list">
+  <%= form_with url: categories_path, method: :get, html: { class: 'mb-2', data: { refresh_list_target: 'form' } } do |f| %>
+    <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: 'Type a movie title',
+                     value: params[:query],
+                     data: {
+                      refresh_list_target: 'searchInput', action: "keyup->refresh-list#update"
+                    } %>
+    <%= f.submit "Rechercher", class: "btn-search-date" %>
   <% end %>
-<% end %>
+
+  <%= render "list", categories: @categories %>
+</div>
