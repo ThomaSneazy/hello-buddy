@@ -18,7 +18,7 @@ $navbar-height: 8vh;
 	height: $navbar-height;
 	box-shadow: 0 -1px 5px -2px rgb(136, 136, 136);
 	background-color:#D5D8B5;
-
+  transition: top 0.3s;
 
 	&__item{
 		flex-grow:1;
@@ -45,4 +45,16 @@ i{
 
 .mobile-bottom-nav__item{
   width: 0px;
+}
+
+.icon-notif{
+  position: absolute;
+  top: 2.5vh;
+  border: 1px solid rgba(0, 0, 0, 0.746);
+  border-radius: 50%;
+  font-size: 8px;
+  width: 14px;
+  right: 12.5vh;
+  background: #f13c3c;
+  color: white;
 }
