@@ -1,53 +1,52 @@
 <div class="banner">
     <div class="container position-relative">
-
-            <span class="name-title text-white text-center mt-3"><%= current_user.first_name %> <%= current_user.last_name %></span>
-            <br>
       <div class="position-absolute top-50 start-50 translate-middle mt-3">
         <div class=" image d-flex flex-column justify-content-center align-items-center">
-
-            <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path (current_user.photo.key)%>')">
+          <%#= link to profile_path (current_user) do %>
+            <div class="creator-avatar" style="height: 130px; width: 130px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path (current_user.photo.key)%>')">
             </div>
+          <%# end %>
         </div>
       </div>
     </div>
+      <%= link_to edit_user_registration_path do  %>
+        <i class="edit-btn fa-solid fa-pencil"></i>
+      <% end %>
   </div>
 </div>
 
 
 <div class="tab">
-  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Notifications')">Notifications</button>
-  <button class="tablinks" onclick="openCity(event, 'Activités')">Activités</button>
-  <button class="tablinks" onclick="openCity(event, 'Participations')">Participations</button>
+  <button class="tablinks" id= "<%= @open_tab == "pending" ? 'defaultOpen' : '' %>" onclick="openCity(event, 'Notifications')">En attente</button>
+  <button class="tablinks" id= "<%= @open_tab == "confirmed" ? 'defaultOpen' : '' %>" onclick="openCity(event, 'Activités')">J'organise</button>
+  <button class="tablinks" onclick="openCity(event, 'Participations')">Je participe</button>
 </div>
 
 
 <div class="notification-container notification-flex">
 
   <div id="Notifications" class="tabcontent">
-           <p>Notifications d'activités</p>
 
               <% @my_activities.each do |activity| %>
-              <% activity.bookings.each do |booking| %>
+                <% activity.bookings.each do |booking| %>
                     <% if !booking.validated  &&  !booking.refused%>
-                    <div class="card text-black bg-white mb-3" style="max-width: 18rem;">
-                      <div class="card-header"><%= activity.title %> </div>
-                        <div class="card-body">
-                          <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
-                          <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
-                          <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %>
-                          <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %>
-                        </div>
-                        </div>
-                  <% end %>
-                  <% end %>
+                      <div class="card-demand text-black bg-white mb-3" style="max-width: 18rem;">
+                        <div class="card-header"><%= activity.title %> </div>
+                          <div class="card-body">
+                            <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
+                            <p class="card-text">Participant: <%= booking.user.first_name.capitalize %></p>
+                            <%= link_to 'Confirmer', validation_path(booking), method: :patch, class: 'button-34 green' %>
+                            <%= link_to 'Décliner', refused_path(booking), method: :patch, class: 'button-34 red' %>
+                          </div>
+                      </div>
+                <% end %>
+              <% end %>
 
               <% end %>
 
-         <p>Notification de participations</p>
                     <% @my_participations.each do |participation| %>
                       <% if !participation.validated &&  !participation.refused %>
-                        <div class="card text-black bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-demand text-black bg-info mb-3" style="max-width: 18rem;">
                             <div class="card-header"><%= participation.activity.title %></div>
                             <div class="card-body">
                               <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
@@ -66,11 +65,11 @@
   <div id="Activités" class="tabcontent notification-flex" >
 
 
-    <p>Activités validées</p>
+    <h3>PARTICIPANT ACCEPTE</h3>
             <% @my_activities.each do |activity| %>
               <% activity.bookings.each do |booking| %>
                 <% if booking.validated  &&  !booking.refused%>
-                <div class="card text-black bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-validate text-black bg-blue mb-3" style="max-width: 18rem;">
                   <div class="card-header"><%= activity.title %> </div>
                     <div class="card-body">
                       <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
@@ -82,11 +81,11 @@
         <% end %>
 
 
-       <p>Activités refusées </p>
+       <h3>PARTICIPANT REFUSE</h3>
               <% @my_activities.each do |activity| %>
               <% activity.bookings.each do |booking| %>
                 <% if !booking.validated  &&  booking.refused%>
-                <div class="card text-black bg-danger mb-3" style="max-width: 18rem;">
+                <div class="card-refused text-black bg-blue mb-3" style="max-width: 18rem;">
                   <div class="card-header"><%= activity.title %> </div>
                     <div class="card-body">
                       <h5 class="card-title"><%= Time.at(activity.start_date).strftime('%F')  %> </h5>
@@ -102,11 +101,11 @@
   </div>
 
   <div id="Participations" class="tabcontent notification-flex" >
-          <p>Participations confirmées</p>
+          <h3>PARTICIPATION ACCEPTEE</h3>
 
               <% @my_participations.each do |participation| %>
                       <% if participation.validated &&  !participation.refused %>
-                        <div class="card text-black bg-success mb-3" style="max-width: 18rem;">
+                        <div class="card-validate text-black mb-3" style="max-width: 18rem;">
                             <div class="card-header"><%= participation.activity.title %></div>
                             <div class="card-body">
                               <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
@@ -116,10 +115,10 @@
                         <% end %>
                      <% end %>
 
-        <p>Participations déclinées</p>
+        <h3>PARTICIPATION REFUSEE</h3>
                <% @my_participations.each do |participation| %>
                       <% if !participation.validated &&  participation.refused %>
-                        <div class="card rounded text-white bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-refused rounded text-white mb-3" style="max-width: 18rem;">
                             <div class="card-header"><%= participation.activity.title %></div>
                             <div class="card-body">
                               <h5 class="card-title"><%= Time.at(participation.activity.start_date).strftime('%F') %></h5>
@@ -133,7 +132,7 @@
 
 </div>
 
-<div class="btn-logout"><%= link_to "Log out", destroy_user_session_path, method: :delete,  class: "button-34 black text-black" %>
+<div class="btn-logout"><%= link_to "Log out ->[]", destroy_user_session_path, method: :delete,  class: "button-34 black text-black" %>
 </div>
 
 

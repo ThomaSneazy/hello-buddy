@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = @user
     if @review.save
-      redirect_to profile_path(@user)
+      redirect_to profiles_path(@user)
     else
       render :new
     end

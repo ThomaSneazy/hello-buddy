@@ -41,15 +41,15 @@
 //banner
 
 .banner {
-  height: 100px;
-  background: linear-gradient(#D5D8B5, #A25B5B);  box-shadow: 3px 5px 3px rgba(69, 65, 65, 0.28);
+  background: linear-gradient(#D5D8B5, #809A6F);  box-shadow: 3px 5px 3px rgba(69, 65, 65, 0.28);
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  height: 350px;
   font-family: 'Helvetica', cursive;
   text-align: center;
+  padding: 12vh;
 }
+
+
 
 .banner h1 {
   margin: 0;

@@ -1,0 +1,50 @@
+.messagerie-title {
+  margin: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  h2 {
+    text-align: center;
+  }
+}
+.discussion {
+	max-width: 600px;
+	margin: 0 auto;
+
+	display: flex;
+	flex-flow: column wrap;
+}
+
+ .bubble {
+	border-radius: 1em;
+	padding: 0.25em 0.75em;
+	margin: 0.0625em;
+	max-width: 50%;
+}
+
+.bubble.sender1 {
+	align-self: flex-start;
+	background-color: cornflowerblue;
+	color: #fff;
+  float: left;
+}
+
+.bubble.recipient {
+	align-self: flex-end;
+	background-color: #13c06f;
+}
+
+ .bubble.sender.first { border-bottom-left-radius: 0.1em; }
+ .bubble.sender.last { border-top-left-radius: 0.1em; }
+ .bubble.sender.middle {
+	border-bottom-left-radius: 0.1em;
+ 	border-top-left-radius: 0.1em;
+}
+
+.bubble.recipient.first { border-bottom-right-radius: 0.1em; }
+.bubble.recipient.last { border-top-right-radius: 0.1em; }
+.bubble.recipient.middle {
+	border-bottom-right-radius: 0.1em;
+	border-top-right-radius: 0.1em;
+}
