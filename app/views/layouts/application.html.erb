@@ -15,6 +15,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Space+Mono&display=swap" rel="stylesheet">
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+     <style>
+      <%= ".msg-#{current_user&.id}" %> {
+      background-color: #007bff !important;
+      padding: 10px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+      /* display: flex; */
+        /* justify-content: flex-start !important; */
+        float: left !important;
+        margin-left: -24px !important;
+      }
+    </style>
   </head>
 
   <body>
