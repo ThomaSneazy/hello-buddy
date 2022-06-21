@@ -2,7 +2,7 @@
   <%= form_with url: categories_path, method: :get, html: { class: 'mb-2', data: { refresh_list_target: 'form' } } do |f| %>
     <%= f.text_field :query,
                      class: "form-control",
-                     placeholder: 'Type a movie title',
+                     placeholder: 'Rechercher dans les catégories',
                      value: params[:query],
                      data: {
                       refresh_list_target: 'searchInput', action: "keyup->refresh-list#update"
