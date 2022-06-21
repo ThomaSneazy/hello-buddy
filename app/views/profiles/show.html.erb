@@ -40,7 +40,7 @@
       <span class="text-dark"><%= Date.new(Date.today.year() - 2000).year %> ans </span></div>
   <div class="tab-pane container fade" id="pro">
    <% @user.reviews.each do |review| %>
-          <div class="comment mb-3">
+          <div class="comment mb-3 mt-3">
             <div class="pb-3">
               <p>Noté par : <%= review.user.first_name %></p>
               <%= cl_image_tag @user.photo.key, class: "avatar" %>
