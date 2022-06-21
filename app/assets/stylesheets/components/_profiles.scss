@@ -1,77 +1,3 @@
-label, a{
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-  // display: inline-block;
-  color: inherit;
-  transition: border 0.2s;
-  &:hover{
-    border-bottom-color: #206d36;
-  }
-}
-
-.layout{
-  display: grid;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  grid-template-rows: 50px 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-input[type="radio"]{
-  display: none;
-}
-
-label.nav{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-bottom: 2px solid #266130;
-  background: #ecf0f1;
-  user-select: none;
-  transition: background 0.4s, padding-left 0.2s;
-  padding-left: 0;
-  input[type="radio"]:checked + .page + &{
-    background: #496d5b;
-    color: #ffffff;
-  }
-}
-
-.page{
-  grid-column-start: 1;
-  grid-row-start: 2;
-  grid-column-end: span 3;
-  padding: 0px 20px;
-  display: flex;
-  align-items: center;
-}
-
-.page-contents {
-  transform: translateY(20px);
-  transition: opacity 0.2s, transform 0.2s;
-  @for $c from 1 through 20{
-    &:nth-child(#{$c}){
-      transition-delay: 0.2s + ($c * 0.2s);
-    }
-  }
-}
-
-input[type="radio"] + .page{
-  transition: transform 0.2s;
-  transform: translateX(100%);
-}
-
-input[type="radio"]:checked + .page{
-  transform: translateX(0%);
-}
-
-.page-contents{
-  max-width: 100%;
-  width: 500px;
-  margin: 0 auto;
-}
 
 
 .flex-container {
@@ -80,7 +6,62 @@ input[type="radio"]:checked + .page{
 }
 
 // commentaires
-.card {
+.comment {
   display: grid;
-  grid-template-rows: max-content 200px 1fr;
+  grid-template-rows: max-content 30px 1fr;
+  background-color: #d9e0dc;
+  border-radius: 5%;
+}
+
+.sectioncomment{
+  border-radius: 5%;
+}
+
+.contcom{
+  display: flex;
+  flex-direction: space-between;
+}
+
+// Avatar
+.avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.avatar{
+  width: auto;
+  border-radius: 50%;
+}
+
+// boutton envoyer
+.button {
+  color: #1e8943;
+  border: 3px solid #1b6020;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+// position: relative
+// left: 24vh;
+
+.flex-container {
+  display: flex;
+  flex-direction: space-between;
 }
