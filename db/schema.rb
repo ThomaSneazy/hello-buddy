@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_074605) do
     t.text "location"
     t.string "meeting_point"
     t.integer "difficulty"
-    t.bigint "user_id"
-    t.bigint "category_id"
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_of_participant"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_074605) do
     t.string "address"
     t.string "phone"
     t.string "description"
-    t.integer "birth_date"
+    t.date "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
