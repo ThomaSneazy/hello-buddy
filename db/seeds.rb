@@ -235,7 +235,7 @@ paddle = Activity.new(
 )
 paddle.save!
 
-paddle2 = Activity.new(
+paddle1 = Activity.new(
   title: "Session paddle aux Catalans",
   description: "Tous niveaux",
   meeting_point: "65 avenue du prado, Marseille",
@@ -245,7 +245,7 @@ paddle2 = Activity.new(
   category_id: paddle.id,
   user_id: user4.id
 )
-paddle2.save!
+paddle1.save!
 
 petanque = Activity.new(
   title: "Petanque au Panier",
