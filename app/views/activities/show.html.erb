@@ -1,109 +1,103 @@
 <div class="main-container">
   <div class="creator-container">
 
-    <%= link_to profiles_path(@activity.user) do %>
-    <div class="creator-avatar" style=" background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
-    </div>
-    <% end %>
+  <%= link_to profiles_path(@activity.user) do %>
+  <div class="creator-avatar" style=" background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
+  </div>
+  <% end %>
 
-<div class="name-stars">
-      <div>
-        <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
-        <% if @activity.user.id == current_user.id  %>
-          <div class="creator-edit-delete">
-            <%= link_to edit_activity_path(@activity) do %>
-              <i class="fa-solid fa-pencil"></i>
-              <% end %>
-              <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa-solid fa-trash"></i>
-              <% end %>
-          </div>
+  <div class="name-stars">
+    <div>
+      <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
+      <% if @activity.user.id == current_user.id  %>
+        <div class="creator-edit-delete">
+          <%= link_to edit_activity_path(@activity) do %>
+          <i class="fa-solid fa-pencil"></i>
+          <% end %>
+          <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
         <% end %>
-        </div>
+    </div>
 
-        <div class="creator-rating">
-          <% @avg_rating.times do %>
-          <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
-          <% end %>
-          <% (5 - @avg_rating).times do %>
-          <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
-          <% end %>
-        </div>
-</div>
-
-      </div>
+    <div class="creator-rating">
+      <% @avg_rating.times do %>
+      <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
+      <% end %>
+      <% (5 - @avg_rating).times do %>
+      <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
+      <% end %>
+    </div>
+  </div>
 
     </div>
+  </div>
 
   <div class="activity-container">
     <h3><%= @activity.title %></h3>
 
-      <div class="datetime">
-
-        <div>
-          <i class="fa-solid fa-calendar-days"></i>
-          <%= Time.at(@activity.start_date).strftime('%F') %>
-        </div>
-
-        <div>
-          <em><i class="fa-regular fa-clock"></i></em>
-          <%= Time.at(@activity.start_date).strftime('%H')  %> H <%= Time.at(@activity.start_date).strftime('%M') %>
-        </div>
-
+    <div class="datetime">
+      <div>
+        <i class="fa-solid fa-calendar-days"></i>
+        <%= Time.at(@activity.start_date).strftime('%F') %>
       </div>
 
+      <div>
+        <em><i class="fa-regular fa-clock"></i></em>
+        <%= Time.at(@activity.start_date).strftime('%H')  %> H <%= Time.at(@activity.start_date).strftime('%M') %>
+      </div>
     </div>
-      <div class="activity-description">
-        <p><%= @activity.description %></p>
-      </div>
+  </div>
+  <div class="activity-description">
+    <p><%= @activity.description %></p>
+  </div>
 
   </div>
 
 
-    <div class="activity-info">
-
-<article class="section">
-  <article class="sub-section">
-      <div class="difficulty">
-        <div>
-          <%= image_tag("muscle.png", :alt => "muscle", class: "muscle") %>
+  <div class="activity-info">
+    <article class="section">
+      <article class="sub-section">
+        <div class="difficulty">
+          <div>
+            <%= image_tag("muscle.png", :alt => "muscle", class: "muscle") %>
+          </div>
+          <div>
+            <%= @activity.difficulty %> /10
+          </div>
         </div>
-        <div>
-          <%= @activity.difficulty %> /10
-        </div>
-      </div>
-    </article>
+      </article>
 
-  <article class="sub-section">
-      <div class="equipement">
-        <div>
-          <%= image_tag("backpack.png", :alt => "backpack", class: "backpack") %>
+      <article class="sub-section">
+        <div class="equipement">
+          <div>
+            <%= image_tag("backpack.png", :alt => "backpack", class: "backpack") %>
+          </div>
+          <div>
+            <%= @activity.material || 'Pas de materiel spécifique'%>
+          </div>
         </div>
-        <div>
-          <%= @activity.material || 'Pas de materiel spécifique'%>
+      </article>
+
+      <article class="sub-section">
+        <div class="participants">
+          <div>
+            <%= image_tag("group.png", :alt => "group", class: "group") %>
+          </div>
+
+          <div>
+            <td><% @activity.bookings.each do |booking| %>
+            <%= link_to profiles_path(booking.user) do %>
+            <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
+            <% end %>
+            <% end %>
+            </td>
+          </div>
         </div>
-      </div>
-  </article>
-
-  <article class="sub-section">
-    <div class="participants">
-      <div>
-        <%= image_tag("group.png", :alt => "group", class: "group") %>
-      </div>
-
-      <div>
-        <td><% @activity.bookings.each do |booking| %>
-        <%= link_to profiles_path(booking.user) do %>
-        <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
-        <% end %>
-        <% end %>
-        </td>
-      </div>
+      </article>
     </div>
-  </article>
-      </div>
-    </div>
-
+  </div>
 
 
   <% unless @activity.user.id == current_user.id %>
