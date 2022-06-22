@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :messages
   has_many :activities
+  validates :photo, presence: true
 
   def pending_bookings_number
     pending_bookings = []
