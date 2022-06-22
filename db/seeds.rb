@@ -235,14 +235,38 @@ paddle = Activity.new(
 )
 paddle.save!
 
+paddle2 = Activity.new(
+  title: "Session paddle aux Catalans",
+  description: "Tous niveaux",
+  meeting_point: "65 avenue du prado, Marseille",
+  start_date: DateTime.new(2022, 7, 22, 11, 0),
+  difficulty: 3,
+  max_of_participant: 4,
+  category_id: paddle.id,
+  user_id: user4.id
+)
+paddle2.save!
+
 petanque = Activity.new(
   title: "Petanque au Panier",
   description: "Pastis à 1€ !!",
   meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 16, 9, 0),
+  start_date: DateTime.new(2022, 7, 16, 19, 0),
   difficulty: 1,
   max_of_participant: 6,
   category_id: petanque.id,
   user_id: user5.id
 )
 petanque.save!
+
+petanque2 = Activity.new(
+  title: "Petanque au Panier",
+  description: "Bière à 1€ !!",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 2, 19, 0),
+  difficulty: 1,
+  max_of_participant: 6,
+  category_id: petanque.id,
+  user_id: user3.id
+)
+petanque2.save!
