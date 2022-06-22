@@ -12,15 +12,15 @@ Activity.destroy_all
 Category.destroy_all
 User.destroy_all
 
-user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Tom', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date:  DateTime.new(1979, 7, 21))
-user2 = User.new(email: 'azerty@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Rachid', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0000000001', birth_date: DateTime.new(1982, 7, 21))
+user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Tom', last_name: 'lol', address: '3 rue de breteuil, Marseille', phone:'0000000001', birth_date:  DateTime.new(1979, 7, 21))
+user2 = User.new(email: 'mathilde@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Mathilde', last_name: 'lol', address: '6 rue paradis, Marseille', phone:'0703056061', birth_date: DateTime.new(1998, 7, 21))
 user3 = User.new(email: 'lea@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Lea', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0600304001', birth_date: DateTime.new(1999, 7, 21))
 user1.save
 user2.save
 user3.save
 img1 = URI.open('https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?size=626&ext=jpg')
 user1.photo.attach(io: img1, filename: "1.jpeg", content_type: 'image/jpeg')
-img2 = URI.open('https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg')
+img2 = URI.open('https://prod-drupal-files.storage.googleapis.com/images/person/Marta%20Iglesias%20Profile.jpg')
 user2.photo.attach(io: img2, filename: "1.jpeg", content_type: 'image/jpeg')
 img3 = URI.open('https://img.freepik.com/free-photo/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.jpg')
 user3.photo.attach(io: img3, filename: "1.jpeg", content_type: 'image/jpeg')
@@ -56,7 +56,7 @@ vtt.save
 
 rando = Activity.new(
   title: "Randonnée Calanques Sormiou",
-  description: "Randonnée sympa, tous niveaux acceptés",
+  description: "Tous niveaux acceptés",
   meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 16, 10, 30),
   difficulty: 2,
@@ -86,13 +86,13 @@ chat_rando2.save
 
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
-  description: "Longue randonnée pour marcheurs endurants",
+  description: "Longue randonnée pour bons marcheurs",
   meeting_point: "45 rue Falque, Marseille",
   start_date: DateTime.new(2022, 7, 6, 8, 30),
   difficulty: 6,
   max_of_participant: 2,
   category_id: randonnee.id,
-  user_id: user2.id
+  user_id: user3.id
 )
 rando3.save!
 
@@ -101,7 +101,7 @@ chat_rando3.save
 
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
-  description: "N'oubliez pas vos maillots de bain",
+  description: "N'oubliez pas vos maillots",
   meeting_point: "20 rue de Rome, Marseille",
   start_date: DateTime.new(2022, 7, 26, 8, 30),
   difficulty: 3,
@@ -116,13 +116,13 @@ chat_rando3.save
 
 rando3 = Activity.new(
   title: "Randonnée Marseilleveyre",
-  description: "Venez découvrir le massif de Marseilleveyre",
+  description: "Venez découvrir ce superbe massif",
   meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
   category_id: randonnee.id,
-  user_id: user2.id
+  user_id: user1.id
 )
 rando3.save!
 
@@ -131,7 +131,7 @@ chat_rando3.save
 
 rando3 = Activity.new(
   title: "Randonnée les Goudes",
-  description: "Niveau intermédiaire, bonne condition physique requise",
+  description: "Niveau intermédiaire",
   meeting_point: "8 chemin des Goudes, Marseille",
   start_date: DateTime.new(2022, 7, 19, 8, 30),
   difficulty: 5,
@@ -146,13 +146,13 @@ chat_rando3.save
 
 rando3 = Activity.new(
   title: "Randonnée Calanques de Port Pin",
-  description: "Magnifique randonnée jusqu'à la plage de Port Pin",
+  description: "Magnifique randonnée vers Port Pin",
   meeting_point: "3 boulevard Neptune, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
   max_of_participant: 2,
   category_id: randonnee.id,
-  user_id: user2.id
+  user_id: user3.id
 )
 rando3.save!
 
@@ -161,7 +161,7 @@ chat_rando3.save
 
 rando3 = Activity.new(
   title: "Randonnée Calanques Morgiou",
-  description: "La description est ici en attendant",
+  description: "Crème solaire requise",
   meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 21, 8, 30),
   difficulty: 3,
@@ -176,10 +176,10 @@ chat_rando3.save
 
 rando9 = Activity.new(
   title: "Randonnée Calanques Sugiton",
-  description: "La description est ici en attendant",
+  description: "Pour débutants",
   meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 8, 21, 11, 30),
-  difficulty: 3,
+  difficulty: 2,
   max_of_participant: 2,
   category_id: randonnee.id,
   user_id: user1.id
@@ -191,7 +191,7 @@ chat_rando9.save
 
 volley = Activity.new(
   title: "Beach Volley plage des Prophètes",
-  description: "Petit beach sympa à la fraiche",
+  description: "Beach sympa à la fraiche",
   meeting_point: "20 rue haxo, Marseille",
   start_date: DateTime.new(2022, 7, 16, 9, 0),
   difficulty: 2,
@@ -200,3 +200,15 @@ volley = Activity.new(
   user_id: user3.id
 )
 volley.save!
+
+surf = Activity.new(
+  title: "Session surf au Prado",
+  description: "Attention aux requins",
+  meeting_point: "65 avenue du prado, Marseille",
+  start_date: DateTime.new(2022, 7, 15, 11, 0),
+  difficulty: 3,
+  max_of_participant: 4,
+  category_id: surf.id,
+  user_id: user2.id
+)
+surf.save!
