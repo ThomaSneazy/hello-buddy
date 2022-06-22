@@ -19,17 +19,18 @@
 
 
 
+
 <div class="message-input">
     <%= simple_form_for [@activity, @chatroom, @message],
       remote: true,
-      html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
+      html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "box-message" } do |f|
     %>
       <%= f.input :content,
         label: false,
-        placeholder: "Message ##{@chatroom.name}",
+        placeholder: "#{@chatroom.name}",
         wrapper_html: {class: "flex-grow-1"}
       %>
-      <%= f.submit "Send", class: "button-34 green" %>
+      <%= f.submit "Envoyer", class: "button-34 red" %>
     <% end %>
 </div>
 </div>
