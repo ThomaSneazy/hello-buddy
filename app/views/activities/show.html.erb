@@ -1,42 +1,44 @@
 <div class="main-container">
   <div class="creator-container">
 
-       <%= link_to profiles_path(@activity.user) do %>
-        <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
-        </div>
-      <% end %>
+    <%= link_to profiles_path(@activity.user) do %>
+    <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
+    </div>
+    <% end %>
       <div class="creator-info">
-          <p class="start-date"><%= Time.at(@activity.start_date).strftime('%F')  %></p>
-          <div style="display:flex">
+        <p class="start-date"><%= Time.at(@activity.start_date).strftime('%F')  %></p>
+        <div style="display:flex">
           <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
-            <% if @activity.user.id == current_user.id  %>
-              <div class="creator-edit-delete">
-                <%= link_to edit_activity_path(@activity) do %>
-                  <i class="fa-solid fa-pencil"></i>
-                  <% end %>
-                  <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
-                    <i class="fa-solid fa-trash"></i>
-                  <% end %>
-              </div>
-            <% end %>
+          <% if @activity.user.id == current_user.id  %>
+          <div class="creator-edit-delete">
+            <%= link_to edit_activity_path(@activity) do %>
+              <i class="fa-solid fa-pencil"></i>
+              <% end %>
+              <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fa-solid fa-trash"></i>
+              <% end %>
           </div>
-          <div class="creator-rating">
-            <% @avg_rating.times do %>
-              <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
-            <% end %>
-            <% (5 - @avg_rating).times do %>
-              <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
-            <% end %>
-          </div>
+          <% end %>
+        </div>
 
+        <div class="creator-rating">
+          <% @avg_rating.times do %>
+          <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
+          <% end %>
+          <% (5 - @avg_rating).times do %>
+          <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
+          <% end %>
+        </div>
 
       </div>
 
-  </div>
+    </div>
 
-  <div class="activity-container">
-    <h3><%= @activity.title %></h3>
-    <p class="start-hour"><%= Time.at(@activity.start_date).strftime('%H')  %> H <%= Time.at(@activity.start_date).strftime('%M') %></p>
+    <div class="activity-container">
+      <h3><%= @activity.title %></h3>
+      <p class="start-hour">
+        <%= Time.at(@activity.start_date).strftime('%H')  %> H <%= Time.at(@activity.start_date).strftime('%M') %>
+      </p>
 
     <div class="user-description">
       <p><%= @activity.description %></p>
@@ -44,37 +46,39 @@
 
     <div class="activity-info">
 
-    <table class="table borderless">
-      <tbody class="d-flex" >
-        <tr class="d-flex flex-column" >
-          <td>Matériel requis:</td>
-          <td>Difficultés:</td>
-          <td>Participants:</td>
-        </tr>
-        <tr class="d-flex flex-column">
-          <td><%= @activity.material || '...'%> </td>
-          <td><%= @activity.difficulty %> /10</td>
+      <table class="table borderless">
+        <tbody class="d-flex" >
+          <tr class="d-flex flex-column" >
+            <td>Matériel requis:</td>
+            <td>Difficultés:</td>
+            <td>Participants:</td>
+          </tr>
+          <tr class="d-flex flex-column">
+            <td><%= @activity.material || '...'%> </td>
+            <td><%= @activity.difficulty %> /10</td>
 
-          <td><% @activity.bookings.each do |booking| %>
-          <%= link_to profiles_path(booking.user) do %>
-          <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
-          <% end %>
-          <% end %>
-          </td>
+            <td><% @activity.bookings.each do |booking| %>
+            <%= link_to profiles_path(booking.user) do %>
+            <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
+            <% end %>
+            <% end %>
+            </td>
 
-
-        </tr>
-      </tbody>
-    </table>
-
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-</div>
 
   <% unless @activity.user.id == current_user.id %>
   <div class="btn-container">
     <%# <div><a class="button-34 red">Contacter</a></div> %>
-    <div><%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-34 red" %></div>
-    <div><%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %></div>
+    <div>
+      <%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-34 red" %>
+    </div>
+    <div>
+      <%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %>
+    </div>
   </div>
 
   <% end %>
@@ -82,9 +86,5 @@
   <% if @activity.user.id == current_user.id %>
         <div><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-34 red" %></div>
   <% end %>
-
-
-
-
 
 </div>

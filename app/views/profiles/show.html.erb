@@ -5,91 +5,76 @@
         <%# <p class="avatar-large" style="background-image: url('<%= cl_image_path @user.photo.key , height: 300, crop: :fill %>
         <%= cl_image_tag @user.photo.key, class: "avatar-large"%>
         <span class="name-title text-white text-center mt-3 mb-5">
-        <%= @user.first_name %>
-        <%= @user.last_name %></span>
+        <br>
+        <div class="avatar-name">
+          <%= @user.first_name %>
+          <%= @user.last_name %></span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="container" style="margin-top: 10px;">
-<!-- Nav tabs -->
-<ul class="nav nav-tabs d-flex justify-content-between">
-  <li class="nav-item">
-    <a class="nav-link active" data-bs-toggle="tab" href="#msg">Profil</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="#pro">Avis</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="#set">Description</a>
-  </li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane container active" id="msg">
-  <i class="fa-solid fa-location-dot">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-dark"><%= @user.address %></span>
-            <br>
-            <i class="fa-solid fa-phone text-dark ">&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-dark"><%= @user.phone %></span>
-            <br>
-            <i class="fa-solid fa-image-portrait text-dark ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-            <span class="text-dark"><%= Date.new(Date.today.year() - 2000).year %> ans </span></div>
-  <div class="tab-pane container fade" id="pro">
-   <% @user.reviews.each do |review| %>
-          <div class="comment p-3 mb-5">
-            <div class="pb-3">
-              <p>Noté par : <%= review.user.first_name %></p>
-              <%= cl_image_tag @user.photo.key, class: "avatar" %>
-            </div>
-
-            <div class="sectioncomment mb-3">
-              <%= review.content %>
-            </div>
-
-            <p class="text-end"><%= review.rating %> / 5</p>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="flex-item">
-          <%= simple_form_for([@user, @review], remote: true) do  |f| %>
-              <%= f.input :content, label: "Laisse un avis à ton buddy", placeholder: "Ecrire ici" %>
-              <%=  f.input :rating, label: "Note ton buddy", as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
-              <button type="submit" class="btn-valider">Valider</button>
-            <% end %>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-    <label class="nav" for="about">
-      <div class="page avis-page">
-        <span>
-          Avis
-        </span>
-      </div>
-    </label>
-  <input name="nav" type="radio" class="contact-radio" id="contact" />
-    <div class="page contact-page">
-      <div class="page-contents">
-        <p>User.description</p>
-      </div>
-    </div>
-    <label class="nav" for="contact">
-    <span>
-      Description
-    </span>
-    </label>
-    </div>
-              <button type="submit" class="button">Envoyer</button>
-        </div></div>
-  <div class="tab-pane container fade" id="set">This is the description.
-
-  </div>
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Profil</label>
+  <label class="tab" id="two-tab" for="two">Avis</label>
+  <%# <label class="tab" id="three-tab" for="three">Prerequisites</label> %>
 </div>
+
+<div class="panels">
+  <div class="panel" id="one-panel">
+
+    <i class="fa-solid fa-location-dot">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+    <span class="text-dark"><%= @user.address %></span>
+    <br>
+    <i class="fa-solid fa-phone text-dark ">&nbsp;&nbsp;&nbsp;</i>
+    <span class="text-dark"><%= @user.phone %></span>
+    <br>
+    <i class="fa-solid fa-image-portrait text-dark ">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+    <span class="text-dark"><%= Date.new(Date.today.year() - 2000).year %> ans </span>
+    <br>
+    <br>
+    <div class="description">
+      <h1>Description</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis quibusdam totam vitae cumque harum asperiores eum tempore, natus quo aliquid, doloribus exercitationem voluptates pariatur impedit molestias, eveniet consequatur voluptas animi?</p>
+    </div>
+  </div>
+
+  <div class="panel" id="two-panel">
+
+
+    <%= simple_form_for([@user, @review], remote: true) do  |f| %>
+      <%= f.input :content, label: "Laisse un avis à ton buddy", placeholder: "Ecrire ici" %>
+      <%=  f.input :rating, label: "Note ton buddy", as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { controller: "jquery-bar-rating" } } %>
+      <button type="submit" class="button">Valider</button>
+    <% end %>
+
+<div class="comment">
+
+  <% @user.reviews.each do |review| %>
+    <div class="reviewer">Noté par : <p><%= current_user.first_name %></p>
+    <%= cl_image_tag current_user.photo.key, class: "rating-avatar" %></div>
+
+
+    <p class="review-content"><%= review.content %></p>
+
+    <%# <%= review.rating  / 5 %>
+
+      <div class="creator-rating">
+        <% review.rating.times do %>
+          <i class="fa fa-star" aria-hidden="true" style="font-size: 10px; color:goldenrod"></i>
+        <% end %>
+        <% (5 - review.rating).times do %>
+          <i class="fa fa-star" aria-hidden="true" style="font-size: 10px; color:lightgrey"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  </div>
 </div>
