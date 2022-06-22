@@ -13,17 +13,27 @@ Category.destroy_all
 User.destroy_all
 
 user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Tom', last_name: 'lol', address: '3 rue de breteuil, Marseille', phone:'0000000001', birth_date:  DateTime.new(1979, 7, 21))
-user2 = User.new(email: 'mathilde@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Mathilde', last_name: 'lol', address: '6 rue paradis, Marseille', phone:'0703056061', birth_date: DateTime.new(1998, 7, 21))
-user3 = User.new(email: 'lea@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Lea', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0600304001', birth_date: DateTime.new(1999, 7, 21))
+user2 = User.new(email: 'mathilde@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Mathilde', last_name: 'lol', address: '6 rue paradis, Marseille', phone:'0703056061', birth_date: DateTime.new(1998, 6, 21))
+user3 = User.new(email: 'lea@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Lea', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0600304001', birth_date: DateTime.new(1999, 7, 22))
+user4 = User.new(email: 'valentin@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Valentin', last_name: 'lol', address: '12 rue sainte, Marseille', phone:'0610334201', birth_date: DateTime.new(2000, 7, 21))
+user5 = User.new(email: 'phil@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Philippine', last_name: 'lol', address: '18 rue sainte, Marseille', phone:'0712334206', birth_date: DateTime.new(2001, 2, 18))
+
 user1.save
 user2.save
 user3.save
+user4.save
+user5.save
+
 img1 = URI.open('https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?size=626&ext=jpg')
 user1.photo.attach(io: img1, filename: "1.jpeg", content_type: 'image/jpeg')
 img2 = URI.open('https://prod-drupal-files.storage.googleapis.com/images/person/Marta%20Iglesias%20Profile.jpg')
 user2.photo.attach(io: img2, filename: "1.jpeg", content_type: 'image/jpeg')
 img3 = URI.open('https://img.freepik.com/free-photo/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.jpg')
 user3.photo.attach(io: img3, filename: "1.jpeg", content_type: 'image/jpeg')
+img4 = URI.open('https://static1.purepeople.com/articles/5/41/88/95/@/6023960-matt-damon-archives-624x600-3.jpg')
+user4.photo.attach(io: img4, filename: "1.jpeg", content_type: 'image/jpeg')
+img5 = URI.open('https://www.3suisses.fr/media/header-listing/3-suisses/31012/header%20tshirt.jpg')
+user5.photo.attach(io: img5, filename: "1.jpeg", content_type: 'image/jpeg')
 
 yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpg')
 yoga.save
@@ -107,7 +117,7 @@ rando3 = Activity.new(
   difficulty: 3,
   max_of_participant: 2,
   category_id: randonnee.id,
-  user_id: user2.id
+  user_id: user4.id
 )
 rando3.save!
 
@@ -122,7 +132,7 @@ rando3 = Activity.new(
   difficulty: 3,
   max_of_participant: 2,
   category_id: randonnee.id,
-  user_id: user1.id
+  user_id: user5.id
 )
 rando3.save!
 
@@ -167,7 +177,7 @@ rando3 = Activity.new(
   difficulty: 3,
   max_of_participant: 2,
   category_id: randonnee.id,
-  user_id: user2.id
+  user_id: user5.id
 )
 rando3.save!
 
@@ -203,7 +213,7 @@ volley.save!
 
 surf = Activity.new(
   title: "Session surf au Prado",
-  description: "Attention aux requins",
+  description: "Combi requise",
   meeting_point: "65 avenue du prado, Marseille",
   start_date: DateTime.new(2022, 7, 15, 11, 0),
   difficulty: 3,
@@ -212,3 +222,27 @@ surf = Activity.new(
   user_id: user2.id
 )
 surf.save!
+
+paddle = Activity.new(
+  title: "Session paddle au Prado",
+  description: "Attention aux requins",
+  meeting_point: "65 avenue du prado, Marseille",
+  start_date: DateTime.new(2022, 7, 27, 15, 0),
+  difficulty: 4,
+  max_of_participant: 5,
+  category_id: paddle.id,
+  user_id: user4.id
+)
+paddle.save!
+
+petanque = Activity.new(
+  title: "Petanque au Panier",
+  description: "Pastis à 1€ !!",
+  meeting_point: "20 rue haxo, Marseille",
+  start_date: DateTime.new(2022, 7, 16, 9, 0),
+  difficulty: 1,
+  max_of_participant: 6,
+  category_id: petanque.id,
+  user_id: user5.id
+)
+petanque.save!
