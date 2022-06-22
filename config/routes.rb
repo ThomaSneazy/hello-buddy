@@ -28,4 +28,7 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: %i[show destroy update]
   resources :activities, only: %i[destroy]
+
+  mount ActionCable.server => "/cable"
+
 end
