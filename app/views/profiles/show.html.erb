@@ -57,8 +57,8 @@
 <div class="comment">
 
   <% @user.reviews.each do |review| %>
-    <p class="reviewer">Noté par : <p class="reviewer"><%= current_user.first_name %></p></p>
-    <%= cl_image_tag current_user.photo.key, class: "rating-avatar" %>
+    <div class="reviewer">Noté par : <p><%= current_user.first_name %></p>
+    <%= cl_image_tag current_user.photo.key, class: "rating-avatar" %></div>
 
 
     <p class="review-content"><%= review.content %></p>
