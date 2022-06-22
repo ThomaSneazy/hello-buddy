@@ -50,7 +50,7 @@
     <% if current_user.pending_bookings_validated.count.positive? && !current_user.pending_bookings_validated.last.pending %>
 
       <%= link_to pending_path(current_user.pending_bookings_validated.last),method: :patch  do %>
-        <i class="fa-solid fa-comment validated" style='color: red'></i>
+        <i class="fa fa-wrench faa-wrench validated animated faa-fast"></i>
       <% end %>
 
     <% else %>
