@@ -223,25 +223,13 @@ surf = Activity.new(
 )
 surf.save!
 
-paddle = Activity.new(
+paddle1 = Activity.new(
   title: "Session paddle au Prado",
   description: "Attention aux requins",
   meeting_point: "65 avenue du prado, Marseille",
   start_date: DateTime.new(2022, 7, 27, 15, 0),
   difficulty: 4,
   max_of_participant: 5,
-  category_id: paddle.id,
-  user_id: user4.id
-)
-paddle.save!
-
-paddle1 = Activity.new(
-  title: "Session paddle aux Catalans",
-  description: "Tous niveaux",
-  meeting_point: "65 avenue du prado, Marseille",
-  start_date: DateTime.new(2022, 7, 22, 11, 0),
-  difficulty: 3,
-  max_of_participant: 4,
   category_id: paddle.id,
   user_id: user4.id
 )
@@ -258,15 +246,3 @@ petanque = Activity.new(
   user_id: user5.id
 )
 petanque.save!
-
-petanque2 = Activity.new(
-  title: "Petanque au Panier",
-  description: "Bière à 1€ !!",
-  meeting_point: "20 rue haxo, Marseille",
-  start_date: DateTime.new(2022, 7, 2, 19, 0),
-  difficulty: 1,
-  max_of_participant: 6,
-  category_id: petanque.id,
-  user_id: user3.id
-)
-petanque2.save!
