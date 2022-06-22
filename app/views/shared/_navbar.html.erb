@@ -3,7 +3,7 @@
 	<div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
 		<div class="mobile-bottom-nav__item-content">
     <%= link_to root_path, class: "nav-link" do %>
-      <i class="fa-solid fa-magnifying-glass "></i>
+      <i class="fa-solid fa-house"></i>
     <% end %>
 
 
@@ -50,11 +50,11 @@
     <% if current_user.pending_bookings_validated.count.positive? && !current_user.pending_bookings_validated.last.pending %>
 
       <%= link_to pending_path(current_user.pending_bookings_validated.last),method: :patch  do %>
-        <i class="fa fa-wrench faa-wrench validated animated faa-fast"></i>
+          <i class="fa-solid fa-envelope fa-bounce " style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0;" ></i>
       <% end %>
 
     <% else %>
-			<a href="#"><i class="fa-solid fa-comment"></i></a>
+			<a href="#"><i class="fa-solid fa-envelope"></i></a>
     <% end %>
 		</div>
 	</div>

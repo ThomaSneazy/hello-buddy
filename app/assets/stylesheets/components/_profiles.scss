@@ -27,11 +27,13 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .avatar{
   width: auto;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 // boutton envoyer
