@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/404', to: 'errors#not_found', via: :all
   get '/500', to: 'errors#server_error', via: :all
 
-
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
   patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
   patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
