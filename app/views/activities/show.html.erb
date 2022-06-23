@@ -1,62 +1,92 @@
 <div class="main-container">
   <div class="creator-container">
 
-    <%= link_to profiles_path(@activity.user) do %>
-    <div class="creator-avatar" style="height: 150px; width: 150px;border-radius: 50%; background-size:cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
+  <%= link_to profiles_path(@activity.user) do %>
+  <div class="creator-avatar" style=" background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('<%= cl_image_path(@activity.user.photo.key)%>')">
+  </div>
+  <% end %>
+
+  <div class="name-stars">
+    <div>
+      <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
+      <% if @activity.user.id == current_user.id  %>
+        <div class="creator-edit-delete">
+          <%= link_to edit_activity_path(@activity) do %>
+          <i class="fa-solid fa-pencil"></i>
+          <% end %>
+          <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+        <% end %>
     </div>
-    <% end %>
-      <div class="creator-info">
-        <p class="start-date"><%= Time.at(@activity.start_date).strftime('%F')  %></p>
-        <div style="display:flex">
-          <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
-          <% if @activity.user.id == current_user.id  %>
-          <div class="creator-edit-delete">
-            <%= link_to edit_activity_path(@activity) do %>
-              <i class="fa-solid fa-pencil"></i>
-              <% end %>
-              <%= link_to activity_path(@activity), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa-solid fa-trash"></i>
-              <% end %>
-          </div>
-          <% end %>
-        </div>
 
-        <div class="creator-rating">
-          <% @avg_rating.times do %>
-          <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
-          <% end %>
-          <% (5 - @avg_rating).times do %>
-          <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
-          <% end %>
-        </div>
+    <div class="creator-rating">
+      <% @avg_rating.times do %>
+      <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:goldenrod"></i>
+      <% end %>
+      <% (5 - @avg_rating).times do %>
+      <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color:lightgrey"></i>
+      <% end %>
+    </div>
+  </div>
 
+    </div>
+  </div>
+
+  <div class="activity-container">
+    <h3><%= @activity.title %></h3>
+
+    <div class="datetime">
+      <div>
+        <i class="fa-solid fa-calendar-days"></i>
+        <%= Time.at(@activity.start_date).strftime('%F') %>
       </div>
 
-    </div>
-
-    <div class="activity-container">
-      <h3><%= @activity.title %></h3>
-      <p class="start-hour">
+      <div>
+        <em><i class="fa-regular fa-clock"></i></em>
         <%= Time.at(@activity.start_date).strftime('%H')  %> H <%= Time.at(@activity.start_date).strftime('%M') %>
-      </p>
-
-    <div class="user-description">
-      <p><%= @activity.description %></p>
+      </div>
     </div>
+  </div>
+  <div class="activity-description">
+    <p><%= @activity.description %></p>
+  </div>
 
-    <div class="activity-info">
+  </div>
 
-      <table class="table borderless">
-        <tbody class="d-flex" >
-          <tr class="d-flex flex-column" >
-            <td>Matériel requis:</td>
-            <td>Difficultés:</td>
-            <td>Participants:</td>
-          </tr>
-          <tr class="d-flex flex-column">
-            <td><%= @activity.material || '...'%> </td>
-            <td><%= @activity.difficulty %> /10</td>
 
+  <div class="activity-info">
+    <article class="section">
+      <article class="sub-section">
+        <div class="difficulty">
+          <div>
+            <%= image_tag("muscle.png", :alt => "muscle", class: "muscle") %>
+          </div>
+          <div>
+            <%= @activity.difficulty %> /10
+          </div>
+        </div>
+      </article>
+
+      <article class="sub-section">
+        <div class="equipement">
+          <div>
+            <%= image_tag("backpack.png", :alt => "backpack", class: "backpack") %>
+          </div>
+          <div>
+            <%= @activity.material || 'Pas de materiel spécifique'%>
+          </div>
+        </div>
+      </article>
+
+      <article class="sub-section">
+        <div class="participants">
+          <div>
+            <%= image_tag("group.png", :alt => "group", class: "group") %>
+          </div>
+
+          <div>
             <td><% @activity.bookings.each do |booking| %>
             <% unless booking.refused %>
             <%= link_to profiles_path(booking.user) do %>
@@ -65,28 +95,29 @@
             <% end %>
             <% end %>
             </td>
-
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  <% unless @activity.user.id == current_user.id %>
-  <div class="btn-container">
-    <%# <div><a class="button-34 red">Contacter</a></div> %>
-    <div>
-      <%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-34 red" %>
-    </div>
-    <div>
-      <%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 
+
+  <% unless @activity.user.id == current_user.id %>
+  <div class="btn-container">
+
+    <div>
+      <%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-red" %>
+    </div>
+
+    <div>
+      <%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-green' %>
+    </div>
+
+  </div>
   <% end %>
 
   <% if @activity.user.id == current_user.id %>
-        <div><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-34 red" %></div>
+        <div style="padding: 30px 30px 30px 30px "><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-red" %></div>
   <% end %>
 
 </div>

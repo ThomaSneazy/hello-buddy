@@ -2,3 +2,138 @@
 position: relative;
 bottom: 10vh;
 }
+.name-stars{
+  padding-left: 15px;
+}
+
+.creator-container{
+padding-left: 20px;
+padding-top: 15px;
+}
+
+.creator-avatar{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-position: center;
+  background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));
+  background-size:cover;
+  border: 0ch;
+}
+
+.activity-container{
+  background-color: transparent;
+  // box-shadow: 0 0.3rem 0.5rem #00000080;
+  height: 100px;
+  padding-top: 10px;
+  padding-left: 5px;
+  text-align: center;
+  border-bottom: solid 3px rgb(40, 107, 40);
+}
+
+.activity-description{
+  background-color: transparent;
+  box-shadow: 0 0.3rem 0.5rem #00000080;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 100px;
+  margin-bottom: 30px;
+}
+
+.datetime{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.muscle{
+  width: 70px;
+  height: 70px;
+  margin-left: 20px;
+}
+
+.difficulty{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 25px;
+  font-size: 25px;
+  padding-top: 15px;
+}
+
+.equipement{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 25px;
+  font-size: 25px;
+  text-align: end;
+  padding-top: 15px;
+  line-height: 90%;
+}
+
+.participants{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 25px;
+  padding-top: 15px;
+}
+
+.group{
+  width: 70px;
+  height: 70px;
+  margin-left: 20px;
+}
+
+.backpack{
+  width: 70px;
+  height: 70px;
+  margin-left: 20px;
+}
+
+.btn-container{
+padding-top: 50px;
+padding-bottom: 30px;
+}
+
+.button-green {
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: linear-gradient(#297c23, #3d8e4b);
+  transition: background 0.3s ease;
+  border: 1px solid #0a4329;
+  box-shadow: 0 0.5rem 0.8rem #00000080;
+}
+
+.button-red {
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: linear-gradient(#ab3030, #e35454);
+  transition: background 0.3s ease;
+  border: 1px solid #5a1115;
+  box-shadow: 0 0.5rem 0.8rem #00000080;
+}
+
+.section {
+  margin: 0;
+  padding: .3rem;
+  background-color: transparent;
+}
+
+.sub-section {
+  margin: .5rem;
+  padding: .3rem;
+  background: transparent;
+  box-shadow: 0 0.1rem 0.3rem #00000080;
+  min-height: 100px;
+  border-radius: 3px;
+}
