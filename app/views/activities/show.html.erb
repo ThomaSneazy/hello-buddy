@@ -90,7 +90,7 @@
             <td><% @activity.bookings.each do |booking| %>
             <% unless booking.refused %>
             <%= link_to profiles_path(booking.user) do %>
-            <%= cl_image_tag booking.user.photo.key, class: "avatarlol" %>
+            <%= cl_image_tag booking.user.photo.key, class: "avatar-profile", style:"width:20px height:20px" %>
             <% end %>
             <% end %>
             <% end %>
@@ -106,11 +106,11 @@
   <div class="btn-container">
 
     <div>
-      <%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-red" %>
+      <%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-34 red" %>
     </div>
 
     <div>
-      <%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-green' %>
+      <%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-34 green' %>
     </div>
 
   </div>
