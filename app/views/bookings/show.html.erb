@@ -4,12 +4,11 @@
     <div class="main-text">
 
     <% if @booking.validated  %>
-      <strong><h1>Félicitation !</h1></strong>
-        <h5>Votre réservation du <%= Time.at(@booking.activity.start_date).strftime('%F') %> est <strong>Confirmé</strong> par</h5>
-
+      <strong><h1>Félicitations !</h1></strong>
+        <h5>Votre réservation du <%= Time.at(@booking.activity.start_date).strftime('%F') %> est <strong>confirmée</strong> par</h5>
         <h5><%= @booking.activity.user.first_name %> !</h5>
     <% else %>
-        <h5>Votre réservation du <%= Time.at(@booking.activity.start_date).strftime('%F') %> est envoyés à</h5>
+        <h5>Votre réservation du <%= Time.at(@booking.activity.start_date).strftime('%F') %> est envoyée à</h5>
         <h5><%= @booking.activity.user.first_name.capitalize %> !</h5>
     <% end %>
     </div>

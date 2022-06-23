@@ -12,6 +12,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import "jquery-bar-rating/dist/themes/css-stars";
 @import url('https://fonts.googleapis.com/css?family=Arimo:400,700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+@import url('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css" integrity="sha512-OivR4OdSsE1onDm/i3J3Hpsm5GmOVvr9r49K3jJ0dnsxVzZgaOJ5MfxEAxCyGrzWozL9uJGKz6un3A7L+redIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />');
+
+
 
 // Your CSS partials
 @import "components/index";
@@ -40,9 +44,7 @@ h1, h2, h3, h4, p{
 .btn-submit{
   background: #A25B5B;
   border-radius: 20px;
-  &:hover{
-}
-text-decoration: none;
+  text-decoration: none;
   color: #FFFFFF;
   font-size: 16px;
   font-weight: 700;
