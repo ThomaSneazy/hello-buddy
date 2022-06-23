@@ -1,4 +1,4 @@
 meta_product_name: "Hello Buddy"
 meta_title: "Hello Buddy - Find a partner"
 meta_description: "Never go out on an activiy alone anymore"
-meta_image: "logo-site.png" # should exist in `app/assets/images/`
+meta_image: "meta_image.png" # should exist in `app/assets/images/`
