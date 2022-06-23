@@ -33,7 +33,6 @@
   display: flex !important;
   flex-direction: row;
   position: relative;
-
 }
 
 .form-control {
@@ -67,6 +66,14 @@
 
 .message-input {
   margin: 12px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: translateZ(0);
 }
 
 .message-box {
