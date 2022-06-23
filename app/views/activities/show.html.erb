@@ -104,13 +104,15 @@
 
   <% unless @activity.user.id == current_user.id %>
   <div class="btn-container">
-    <%# <div><a class="button-34 red">Contacter</a></div> %>
+
     <div>
       <%= link_to 'Contacter', activity_chatroom_path(@activity), class:"button-red" %>
     </div>
+
     <div>
       <%= link_to 'Réserver', activity_bookings_path(@activity), method: :post, class: 'button-green' %>
     </div>
+
   </div>
   <% end %>
 
