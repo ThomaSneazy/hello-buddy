@@ -115,7 +115,7 @@
   <% end %>
 
   <% if @activity.user.id == current_user.id %>
-        <div><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-34 red" %></div>
+        <div style="padding: 30px 30px 30px 30px "><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-red" %></div>
   <% end %>
 
 </div>
