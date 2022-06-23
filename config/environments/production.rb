@@ -1,6 +1,9 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+
+  config.exceptions_app = self.routes
+
   config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -84,6 +87,9 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_cable.url = "wss://www.hello-buddy.fr/cable"
+  config.action_cable.allowed_request_origins = [ "http://www.hello-buddy.fr", "https://www.hello-buddy.fr" ]
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
