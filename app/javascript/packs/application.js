@@ -12,13 +12,10 @@ import "bootstrap"
 import { initSelect2 } from '../components/init_select2';
 import { initStarRating } from '../plugins/init_star_rating';
 
-initStarRating();
+document.addEventListener("turbolinks:load", function() {
+  initSelect2();
+})
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-
-document.addEventListener("turbolinks:load", function() {
-  initSelect2();
-});
