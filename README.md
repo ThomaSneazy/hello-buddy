@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Project done during Le Wagon 9 weeks' bootcamp.
+Rent cars from famous films and tv show (Netflix was not harmed during the creation of this site)
