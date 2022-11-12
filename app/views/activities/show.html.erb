@@ -123,6 +123,20 @@
         <div style="padding: 30px 30px 30px 30px "><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-red" %></div>
   <% end %>
 
+  <% else %>
+
+     <div class="btn-container" style="margin-bottom: 120px;">
+
+        <div>
+          <%= link_to 'Contacter', login_path(), class:"button-34 red" %>
+        </div>
+
+        <div>
+          <%= link_to 'Réserver', login_path(), class: 'button-34 green' %>
+        </div>
+
+    </div>
+
   <% end %>
 
 </div>

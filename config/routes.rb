@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'categories#index'
 
+  get 'pages', to: 'pages#home', as: :login
   get 'profiles/:id', to: 'profiles#show', as: :profiles
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
   patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
