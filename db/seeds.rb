@@ -26,7 +26,7 @@ user5.save
 
 img1 = URI.open('https://img.freepik.com/free-photo/pleasant-looking-serious-man-stands-profile-has-confident-expression-wears-casual-white-t-shirt_273609-16959.jpg?size=626&ext=jpg')
 user1.photo.attach(io: img1, filename: "1.jpeg", content_type: 'image/jpeg')
-img2 = URI.open('https://prod-drupal-files.storage.googleapis.com/images/person/Marta%20Iglesias%20Profile.jpg')
+img2 = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSfWpNhndq6EMhaVdjj87625k2H6Q6c0WaAQ&usqp=CAU')
 user2.photo.attach(io: img2, filename: "1.jpeg", content_type: 'image/jpeg')
 img3 = URI.open('https://img.freepik.com/free-photo/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.jpg')
 user3.photo.attach(io: img3, filename: "1.jpeg", content_type: 'image/jpeg')
