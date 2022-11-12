@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'categories#index'
 
   get 'profiles/:id', to: 'profiles#show', as: :profiles
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
