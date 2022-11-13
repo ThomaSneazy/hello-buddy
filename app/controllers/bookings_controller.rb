@@ -14,13 +14,13 @@ class BookingsController < ApplicationController
     @booking.activity = @activity
     @booking.user = current_user
     if @booking.save
-      # UserChannel.broadcast_to(
-      #   @activity.user,
-      #   {
-      #     count: @activity.user.pending_bookings_number
+      UserChannel.broadcast_to(
+        @activity.user,
+        {
+          count: @activity.user.pending_bookings_number
 
-      #   }
-      # )
+        }
+      )
       redirect_to @booking
     else
       redirect_to root_path
