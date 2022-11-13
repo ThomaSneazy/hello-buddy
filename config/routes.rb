@@ -28,5 +28,4 @@ Rails.application.routes.draw do
   resources :activities, only: %i[destroy]
 
   mount ActionCable.server => "/cable"
-
 end

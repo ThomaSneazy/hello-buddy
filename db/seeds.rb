@@ -199,7 +199,7 @@ rando9.save!
 chat_rando9 = Chatroom.new(name: "Messagerie #{rando9.title}", user_id: rando9.user.id, activity_id: rando9.id)
 chat_rando9.save
 
-volley = Activity.new(
+volley1 = Activity.new(
   title: "Beach Volley plage des Prophètes",
   description: "Beach sympa à la fraiche",
   meeting_point: "20 rue haxo, Marseille",
@@ -209,7 +209,10 @@ volley = Activity.new(
   category_id: volley.id,
   user_id: user3.id
 )
-volley.save!
+volley1.save!
+
+chat_volley = Chatroom.new(name: "Messagerie #{volley.title}", user_id: volley.user.id, activity_id: volley.id)
+chat_volley.save
 
 surf = Activity.new(
   title: "Session surf au Prado",
