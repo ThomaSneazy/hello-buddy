@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_224933) do
+ActiveRecord::Schema.define(version: 2022_11_17_091531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 2022_06_22_224933) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "poster_id"
+    t.index ["poster_id"], name: "index_reviews_on_poster_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -151,4 +153,5 @@ ActiveRecord::Schema.define(version: 2022_06_22_224933) do
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "users", column: "poster_id"
 end

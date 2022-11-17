@@ -10,6 +10,7 @@ Chatroom.destroy_all
 Booking.destroy_all
 Activity.destroy_all
 Category.destroy_all
+Review.destroy_all
 User.destroy_all
 
 user1 = User.new(email: 'toto@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Tom', last_name: 'lol', address: '3 rue de breteuil, Marseille', phone:'0000000001', birth_date:  DateTime.new(1979, 7, 21))
@@ -36,6 +37,17 @@ img5 = URI.open('https://www.3suisses.fr/media/header-listing/3-suisses/31012/he
 user5.photo.attach(io: img5, filename: "1.jpeg", content_type: 'image/jpeg')
 
 p "users saved successfully"
+
+rev1 = Review.new(content: 'Super expérience avec Mathilde', rating: 4, user_id: user2.id, poster_id: user1.id)
+rev1.save
+
+rev2 = Review.new(content: 'Vraiment un trés bon moment en famille', rating: 5, user_id: user2.id, poster_id: user5.id)
+rev2.save
+
+rev3 = Review.new(content: 'Merci Mathilde, trés agréable', rating: 4, user_id: user2.id, poster_id: user4.id)
+rev3.save
+
+p "reviews saved successfully"
 
 yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpg')
 yoga.save
