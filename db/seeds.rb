@@ -12,7 +12,7 @@ Activity.destroy_all
 Category.destroy_all
 User.destroy_all
 
-user1 = User.new(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Tom', last_name: 'lol', address: '3 rue de breteuil, Marseille', phone:'0000000001', birth_date:  DateTime.new(1979, 7, 21))
+user1 = User.new(email: 'toto@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Tom', last_name: 'lol', address: '3 rue de breteuil, Marseille', phone:'0000000001', birth_date:  DateTime.new(1979, 7, 21))
 user2 = User.new(email: 'mathilde@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Mathilde', last_name: 'lol', address: '6 rue paradis, Marseille', phone:'0703056061', birth_date: DateTime.new(1998, 6, 21))
 user3 = User.new(email: 'lea@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Lea', last_name: 'lol', address: '3 rue fortia, Marseille', phone:'0600304001', birth_date: DateTime.new(1999, 7, 22))
 user4 = User.new(email: 'valentin@gmail.com', password: '123456', password_confirmation: '123456', first_name: 'Valentin', last_name: 'lol', address: '12 rue sainte, Marseille', phone:'0610334201', birth_date: DateTime.new(2000, 7, 21))
@@ -34,6 +34,8 @@ img4 = URI.open('https://static1.purepeople.com/articles/5/41/88/95/@/6023960-ma
 user4.photo.attach(io: img4, filename: "1.jpeg", content_type: 'image/jpeg')
 img5 = URI.open('https://www.3suisses.fr/media/header-listing/3-suisses/31012/header%20tshirt.jpg')
 user5.photo.attach(io: img5, filename: "1.jpeg", content_type: 'image/jpeg')
+
+p "users saved successfully"
 
 yoga = Category.new(name: "Yoga", photo_path: 'yoga.jpg')
 yoga.save
@@ -63,6 +65,40 @@ rafting = Category.new(name: "Rafting", photo_path: 'rafting.jpg')
 rafting.save
 vtt = Category.new(name: "VTT", photo_path: 'vtt.jpg')
 vtt.save
+
+p "categories saved successfully"
+
+yoga1 = Activity.new(
+  title: "Yoga parc de la Torse",
+  description: "Tous niveaux acceptés",
+  meeting_point: "18 boulevard Carnot, Aix-en-Provence",
+  start_date: DateTime.new(2022, 7, 16, 10, 30),
+  difficulty: 2,
+  max_of_participant: 3,
+  category_id: yoga.id,
+  user_id: user2.id
+)
+
+yoga1.save
+
+chat_yoga = Chatroom.new(name: "Messagerie #{yoga1.title}", user_id: yoga1.user.id, activity_id: yoga1.id)
+chat_yoga.save
+
+yoga2 = Activity.new(
+  title: "Yoga parc Borély",
+  description: "Tous niveaux acceptés",
+  meeting_point: "134 Av. Clot Bey, Marseille",
+  start_date: DateTime.new(2022, 7, 16, 10, 30),
+  difficulty: 2,
+  max_of_participant: 3,
+  category_id: yoga.id,
+  user_id: user3.id
+)
+
+yoga2.save
+
+chat_yoga = Chatroom.new(name: "Messagerie #{yoga2.title}", user_id: yoga2.user.id, activity_id: yoga2.id)
+chat_yoga.save
 
 rando = Activity.new(
   title: "Randonnée Calanques Sormiou",
@@ -211,10 +247,10 @@ volley1 = Activity.new(
 )
 volley1.save!
 
-chat_volley = Chatroom.new(name: "Messagerie #{volley.title}", user_id: volley.user.id, activity_id: volley.id)
+chat_volley = Chatroom.new(name: "Messagerie #{volley1.title}", user_id: volley1.user.id, activity_id: volley1.id)
 chat_volley.save
 
-surf = Activity.new(
+surf1 = Activity.new(
   title: "Session surf au Prado",
   description: "Combi requise",
   meeting_point: "65 avenue du prado, Marseille",
@@ -224,7 +260,10 @@ surf = Activity.new(
   category_id: surf.id,
   user_id: user2.id
 )
-surf.save!
+surf1.save!
+
+chat_surf = Chatroom.new(name: "Messagerie #{surf1.title}", user_id: surf1.user.id, activity_id: surf1.id)
+chat_surf.save
 
 paddle1 = Activity.new(
   title: "Session paddle au Prado",
@@ -238,7 +277,10 @@ paddle1 = Activity.new(
 )
 paddle1.save!
 
-petanque = Activity.new(
+chat_paddle = Chatroom.new(name: "Messagerie #{paddle1.title}", user_id: paddle1.user.id, activity_id: paddle1.id)
+chat_paddle.save
+
+petanque1 = Activity.new(
   title: "Petanque au Panier",
   description: "Pastis à 1€ !!",
   meeting_point: "20 rue haxo, Marseille",
@@ -248,4 +290,9 @@ petanque = Activity.new(
   category_id: petanque.id,
   user_id: user5.id
 )
-petanque.save!
+petanque1.save!
+
+chat_petanque = Chatroom.new(name: "Messagerie #{petanque1.title}", user_id: petanque1.user.id, activity_id: petanque1.id)
+chat_petanque.save
+
+p "activities saved successfully"
