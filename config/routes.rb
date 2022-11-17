@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'categories#index'
 
+  get 'pages', to: 'pages#home', as: :login
   get 'profiles/:id', to: 'profiles#show', as: :profiles
-  get '/404', to: 'errors#not_found', via: :all
-  get '/500', to: 'errors#server_error', via: :all
-
   get 'dashboards/:id', to: 'dashboards#show', as: :dashboard
   patch 'bookings/:id/refuse', to: 'bookings#refused', as: :refused
   patch 'bookings/:id/confirm', to: 'bookings#validation', as: :validation
@@ -30,5 +28,4 @@ Rails.application.routes.draw do
   resources :activities, only: %i[destroy]
 
   mount ActionCable.server => "/cable"
-
 end

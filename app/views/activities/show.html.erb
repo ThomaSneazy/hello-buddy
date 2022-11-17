@@ -9,6 +9,7 @@
   <div class="name-stars">
     <div>
       <strong><h4 class="creator-name"><%= @activity.user.first_name.capitalize %></h4></strong>
+  <% if current_user %>
       <% if @activity.user.id == current_user.id  %>
         <div class="creator-edit-delete">
           <%= link_to edit_activity_path(@activity) do %>
@@ -19,6 +20,7 @@
           <% end %>
         </div>
         <% end %>
+  <% end %>
     </div>
 
     <div class="creator-rating">
@@ -101,7 +103,7 @@
     </div>
   </div>
 
-
+  <% if current_user %>
   <% unless @activity.user.id == current_user.id %>
   <div class="btn-container">
 
@@ -116,8 +118,25 @@
   </div>
   <% end %>
 
+
   <% if @activity.user.id == current_user.id %>
         <div style="padding: 30px 30px 30px 30px "><%= link_to 'Messages', activity_chatroom_path(@activity), class:"button-red" %></div>
+  <% end %>
+
+  <% else %>
+
+     <div class="btn-container" style="margin-bottom: 120px;">
+
+        <div>
+          <%= link_to 'Contacter', login_path(), class:"button-34 red" %>
+        </div>
+
+        <div>
+          <%= link_to 'Réserver', login_path(), class: 'button-34 green' %>
+        </div>
+
+    </div>
+
   <% end %>
 
 </div>

@@ -59,15 +59,16 @@
         margin-left: -24px !important;
       }
     </style>
+
   </head>
 
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/header' %>
     <% if user_signed_in? %>
-    <%= render 'shared/navbar' %>
-
-
+      <%= render 'shared/navbar' %>
+    <% else  %>
+      <%= render 'shared/navbar_no_user' unless controller_name == "pages" || controller_name == "sessions" || controller_name == "registrations" %>
     <% end %>
 
 

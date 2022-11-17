@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @review = Review.new(review_params)
     @review.user = @user
+    @review.poster_id = current_user.id
     if @review.save
       redirect_to profiles_path(@user)
     else

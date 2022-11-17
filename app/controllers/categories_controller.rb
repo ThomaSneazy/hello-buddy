@@ -11,7 +11,9 @@ class CategoriesController < ApplicationController
       format.text { render partial: 'list.html', locals: { categories: @categories } }
     end
 
-    @my_activities = Activity.where(user_id: current_user.id)
-    @my_participations = Booking.where(user_id: current_user.id)
+    if current_user.present?
+      @my_activities = Activity.where(user_id: current_user.id)
+      @my_participations = Booking.where(user_id: current_user.id)
+    end
   end
 end

@@ -1,0 +1,49 @@
+
+<nav class="mobile-bottom-nav" data-controller="disabled">
+	<div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+		<div class="mobile-bottom-nav__item-content">
+
+        <%= link_to root_path, class: "nav-link" do %>
+          <i class="fa-solid fa-house"></i>
+        <% end %>
+		</div>
+	</div>
+	<div class="mobile-bottom-nav__item">
+		<div class="mobile-bottom-nav__item-content" data-disabled-target="output3">
+
+			<%= image_tag "icon-hiking.png", class: "icon-hiking"%>
+
+
+		</div>
+	</div>
+		</div>
+	</div>
+	<div class="mobile-bottom-nav__item">
+		<div class="mobile-bottom-nav__item-content">
+
+    <%= link_to login_path()  do %>
+      log in
+    <% end %>
+
+
+		</div>
+	</div>
+	<div class="mobile-bottom-nav__item" >
+		<div class="mobile-bottom-nav__item-content">
+
+          <i class="fa-solid fa-bell" data-disabled-target="output1"></i>
+
+		</div>
+	</div>
+
+	<div class="mobile-bottom-nav__item">
+		<div class="mobile-bottom-nav__item-content">
+
+
+
+          <i class="fa-solid fa-envelope" data-disabled-target="output2"></i>
+
+
+		</div>
+	</div>
+</nav>
