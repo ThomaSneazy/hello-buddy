@@ -55,7 +55,11 @@
     <% end %>
     <% end %>
 
+<% if current_user && current_user != @user %>
 <div class="comment">
+<% else %>
+<div class="comment mb-5">
+<% end %>
 
   <% @user.reviews.each do |review| %>
     <div class="reviewer">Noté par : <p><%= review.poster.first_name %></p>
