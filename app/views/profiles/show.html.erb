@@ -47,11 +47,12 @@
 
   <div class="panel" id="two-panel">
 
-
+    <% if current_user %>
     <%= simple_form_for([@user, @review], remote: true, data:{controller:'rating'}) do  |f| %>
       <%= f.input :content, label: "Laisse un avis à ton buddy", placeholder: "Ecrire ici" %>
       <%=  f.input :rating, label: "Note ton buddy", as: :select, collection: (1..5), required: true, prompt: "Donnez lui une note de 1 à 5", input_html: { data: { rating_target: "input" } } %>
       <button type="submit" class="button">Valider</button>
+    <% end %>
     <% end %>
 
 <div class="comment">
